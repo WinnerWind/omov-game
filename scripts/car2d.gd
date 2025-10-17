@@ -2,7 +2,7 @@
 extends Path2D
 class_name CarPath
 
-@export var time_taken:float
+@export_custom(PROPERTY_HINT_NONE,"suffix:px/s") var speed:float
 @export_group("Visuals")
 @export var texture:Texture2D:
 	set(new_texture):
@@ -18,7 +18,10 @@ class_name CarPath
 @export var path_follow:PathFollow2D
 
 func _process(delta: float) -> void:
-	path_follow.progress_ratio += delta / time_taken # Move object in time_taken seconds.
+	if not Engine.is_editor_hint():
+		var distance = curve.get_baked_length()
+		var time_taken = distance/speed
+		path_follow.progress_ratio += delta / time_taken # Move object in time_taken seconds.
 func set_variables():
 	if sprite and texture:
 		sprite.texture = texture
