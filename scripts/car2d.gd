@@ -17,11 +17,13 @@ class_name CarPath
 @export var collision_object:CollisionShape2D
 @export var path_follow:PathFollow2D
 
+var stopped:bool #Used to stop the car for various circumstances.
 func _process(delta: float) -> void:
 	if not Engine.is_editor_hint():
-		var distance = curve.get_baked_length()
-		var time_taken = distance/speed
-		path_follow.progress_ratio += delta / time_taken # Move object in time_taken seconds.
+		if not stopped:
+			var distance = curve.get_baked_length()
+			var time_taken = distance/speed
+			path_follow.progress_ratio += delta / time_taken # Move object in time_taken seconds.
 func set_variables():
 	if sprite and texture:
 		sprite.texture = texture

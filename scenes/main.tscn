@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bp6qss41chrho"]
+[gd_scene load_steps=7 format=3 uid="uid://bp6qss41chrho"]
 
 [ext_resource type="Script" uid="uid://pbyp0y4w8tjd" path="res://scripts/car2d.gd" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://brd5t8jlyq7" path="res://icon.svg" id="2_0wfyh"]
+[ext_resource type="Script" uid="uid://t1c18exc0pnw" path="res://scripts/stop-area.gd" id="3_sugp2"]
 
 [sub_resource type="Curve2D" id="Curve2D_0wfyh"]
 _data = {
@@ -12,12 +13,15 @@ point_count = 3
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0wfyh"]
 size = Vector2(125, 125)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sugp2"]
+size = Vector2(100, 100)
+
 [node name="Node2D" type="Node2D"]
 
 [node name="Path2D" type="Path2D" parent="." node_paths=PackedStringArray("sprite", "collision_object", "path_follow")]
 curve = SubResource("Curve2D_0wfyh")
 script = ExtResource("1_o5qli")
-speed = 100.0
+speed = 300.0
 texture = ExtResource("2_0wfyh")
 collision_shape = SubResource("RectangleShape2D_0wfyh")
 sprite = NodePath("PathFollow2D/Car/Sprite2D")
@@ -36,3 +40,10 @@ texture = ExtResource("2_0wfyh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Car"]
 shape = SubResource("RectangleShape2D_0wfyh")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("3_sugp2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(396, 405)
+shape = SubResource("RectangleShape2D_sugp2")
