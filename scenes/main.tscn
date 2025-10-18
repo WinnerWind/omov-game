@@ -27,9 +27,13 @@ point_count = 5
 [node name="Node2D" type="Node2D"]
 
 [node name="Stop Area" parent="." instance=ExtResource("2_sugp2")]
-stop_cars = false
 
-[node name="CarSpawner" type="Node2D" parent="."]
+[node name="CarSpawner" type="Node2D" parent="." node_paths=PackedStringArray("timer")]
 script = ExtResource("3_sugp2")
-car_packed = ExtResource("1_0wfyh")
+max_delay = 1.0
+min_delay = 0.1
 curves = Array[Curve2D]([SubResource("Curve2D_sugp2"), SubResource("Curve2D_jyhfs"), SubResource("Curve2D_tbgi4")])
+car_packed = ExtResource("1_0wfyh")
+timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="CarSpawner"]
