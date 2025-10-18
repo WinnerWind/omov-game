@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bl8poaryl3h53"]
+
+[ext_resource type="Script" uid="uid://t1c18exc0pnw" path="res://scripts/stop-area.gd" id="1_kn2g5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sugp2"]
+size = Vector2(100, 100)
+
+[node name="Stop Area" type="Area2D"]
+script = ExtResource("1_kn2g5")
+stop_cars = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(396, 405)
+shape = SubResource("RectangleShape2D_sugp2")
