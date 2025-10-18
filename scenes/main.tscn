@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bp6qss41chrho"]
+[gd_scene load_steps=10 format=3 uid="uid://bp6qss41chrho"]
 
 [ext_resource type="PackedScene" uid="uid://ctmkpurla8vot" path="res://scenes/prefabs/car.tscn" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://bl8poaryl3h53" path="res://scenes/prefabs/stop_area.tscn" id="2_sugp2"]
 [ext_resource type="Script" uid="uid://cqp60ymv8d6c2" path="res://scripts/car_spawner.gd" id="3_sugp2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbgi4"]
+size = Vector2(100, 100)
 
 [sub_resource type="Curve2D" id="Curve2D_sugp2"]
 resource_name = "Default"
@@ -24,16 +27,26 @@ _data = {
 }
 point_count = 5
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_sugp2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jyhfs"]
+size = Vector2(50, 50)
+
 [node name="Node2D" type="Node2D"]
 
 [node name="Stop Area" parent="." instance=ExtResource("2_sugp2")]
+shape = SubResource("RectangleShape2D_tbgi4")
 
 [node name="CarSpawner" type="Node2D" parent="." node_paths=PackedStringArray("timer")]
 script = ExtResource("3_sugp2")
-max_delay = 1.0
+max_delay = 0.2
 min_delay = 0.1
 curves = Array[Curve2D]([SubResource("Curve2D_sugp2"), SubResource("Curve2D_jyhfs"), SubResource("Curve2D_tbgi4")])
 car_packed = ExtResource("1_0wfyh")
 timer = NodePath("Timer")
 
 [node name="Timer" type="Timer" parent="CarSpawner"]
+
+[node name="Car" parent="." instance=ExtResource("1_0wfyh")]
+texture = SubResource("CanvasTexture_sugp2")
+collision_shape = SubResource("RectangleShape2D_jyhfs")

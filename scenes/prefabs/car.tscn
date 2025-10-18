@@ -1,7 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ctmkpurla8vot"]
 
 [ext_resource type="Script" uid="uid://pbyp0y4w8tjd" path="res://scripts/car2d.gd" id="1_1d5yk"]
-[ext_resource type="Texture2D" uid="uid://brd5t8jlyq7" path="res://icon.svg" id="2_2kgp8"]
 
 [sub_resource type="Curve2D" id="Curve2D_0wfyh"]
 _data = {
@@ -9,15 +8,17 @@ _data = {
 }
 point_count = 3
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0wfyh"]
-size = Vector2(125, 125)
+[sub_resource type="CanvasTexture" id="CanvasTexture_pg773"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1d5yk"]
 
 [node name="Car" type="Path2D" node_paths=PackedStringArray("sprite", "collision_object", "path_follow", "raycast")]
 curve = SubResource("Curve2D_0wfyh")
 script = ExtResource("1_1d5yk")
 speed = 300.0
-texture = ExtResource("2_2kgp8")
-collision_shape = SubResource("RectangleShape2D_0wfyh")
+raycast_distance = 30.0
+texture = SubResource("CanvasTexture_pg773")
+collision_shape = SubResource("RectangleShape2D_1d5yk")
 sprite = NodePath("PathFollow2D/Car/Sprite")
 collision_object = NodePath("PathFollow2D/Car/Collider")
 path_follow = NodePath("PathFollow2D")
@@ -31,10 +32,10 @@ loop = false
 [node name="Car" type="CharacterBody2D" parent="PathFollow2D"]
 
 [node name="Sprite" type="Sprite2D" parent="PathFollow2D/Car"]
-texture = ExtResource("2_2kgp8")
+texture = SubResource("CanvasTexture_pg773")
 
 [node name="Collider" type="CollisionShape2D" parent="PathFollow2D/Car"]
-shape = SubResource("RectangleShape2D_0wfyh")
+shape = SubResource("RectangleShape2D_1d5yk")
 
 [node name="Raycast" type="RayCast2D" parent="PathFollow2D/Car"]
-target_position = Vector2(100, 0)
+target_position = Vector2(30, 0)

@@ -3,15 +3,20 @@ extends Path2D
 class_name CarPath
 
 @export_custom(PROPERTY_HINT_NONE,"suffix:px/s") var speed:float
+@export_custom(PROPERTY_HINT_NONE, "suffix:px") var raycast_distance:float = 100:
+	set(new):
+		raycast_distance = new
+		if is_node_ready(): set_variables()
 @export_group("Visuals")
 @export var texture:Texture2D:
-	set(new_texture):
-		texture = new_texture
+	set(new):
+		texture = new
 		if is_node_ready(): set_variables()
 @export var collision_shape:RectangleShape2D:
-	set(new_shape):
-		collision_shape = new_shape
+	set(new):
+		collision_shape = new
 		if is_node_ready(): set_variables()
+@export_tool_button("Reload All Visuals") var reload_visuals_script:Callable = set_variables
 @export_group("Nodes")
 @export var sprite:Sprite2D
 @export var collision_object:CollisionShape2D
@@ -30,3 +35,5 @@ func set_variables():
 		sprite.texture = texture
 	if collision_object and collision_shape:
 		collision_object.shape = collision_shape
+	if raycast:
+		raycast.target_position.x = raycast_distance
