@@ -18,7 +18,34 @@ size = Vector2(100, 100)
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Path2D" type="Path2D" parent="." node_paths=PackedStringArray("sprite", "collision_object", "path_follow")]
+[node name="Path2D2" type="Path2D" parent="." node_paths=PackedStringArray("sprite", "collision_object", "path_follow", "raycast")]
+curve = SubResource("Curve2D_0wfyh")
+script = ExtResource("1_o5qli")
+speed = 100.0
+texture = ExtResource("2_0wfyh")
+collision_shape = SubResource("RectangleShape2D_0wfyh")
+sprite = NodePath("PathFollow2D/Car/Sprite2D")
+collision_object = NodePath("PathFollow2D/Car/CollisionShape2D")
+path_follow = NodePath("PathFollow2D")
+raycast = NodePath("PathFollow2D/Car/RayCast2D")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
+position = Vector2(149, 68)
+rotation = 1.6415116
+loop = false
+
+[node name="Car" type="CharacterBody2D" parent="Path2D2/PathFollow2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D2/PathFollow2D/Car"]
+texture = ExtResource("2_0wfyh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D2/PathFollow2D/Car"]
+shape = SubResource("RectangleShape2D_0wfyh")
+
+[node name="RayCast2D" type="RayCast2D" parent="Path2D2/PathFollow2D/Car"]
+target_position = Vector2(100, 0)
+
+[node name="Path2D" type="Path2D" parent="." node_paths=PackedStringArray("sprite", "collision_object", "path_follow", "raycast")]
 curve = SubResource("Curve2D_0wfyh")
 script = ExtResource("1_o5qli")
 speed = 300.0
@@ -27,6 +54,7 @@ collision_shape = SubResource("RectangleShape2D_0wfyh")
 sprite = NodePath("PathFollow2D/Car/Sprite2D")
 collision_object = NodePath("PathFollow2D/Car/CollisionShape2D")
 path_follow = NodePath("PathFollow2D")
+raycast = NodePath("PathFollow2D/Car/RayCast2D")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 position = Vector2(149, 68)
@@ -41,8 +69,12 @@ texture = ExtResource("2_0wfyh")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Car"]
 shape = SubResource("RectangleShape2D_0wfyh")
 
+[node name="RayCast2D" type="RayCast2D" parent="Path2D/PathFollow2D/Car"]
+target_position = Vector2(100, 0)
+
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("3_sugp2")
+stop_cars = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(396, 405)

@@ -16,11 +16,12 @@ class_name CarPath
 @export var sprite:Sprite2D
 @export var collision_object:CollisionShape2D
 @export var path_follow:PathFollow2D
+@export var raycast:RayCast2D
 
 var stopped:bool #Used to stop the car for various circumstances.
 func _process(delta: float) -> void:
 	if not Engine.is_editor_hint():
-		if not stopped:
+		if not stopped and not raycast.is_colliding():
 			var distance = curve.get_baked_length()
 			var time_taken = distance/speed
 			path_follow.progress_ratio += delta / time_taken # Move object in time_taken seconds.
