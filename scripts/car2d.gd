@@ -19,7 +19,7 @@ class_name CarPath
 @export_tool_button("Reload All Visuals") var reload_visuals_script:Callable = set_variables
 @export_group("Nodes")
 @export var sprite:Sprite2D
-@export var collision_object:CollisionShape2D
+@export var detector_collision_object:CollisionShape2D
 @export var path_follow:PathFollow2D
 @export var raycast:RayCast2D
 
@@ -33,7 +33,14 @@ func _process(delta: float) -> void:
 func set_variables():
 	if sprite and texture:
 		sprite.texture = texture
-	if collision_object and collision_shape:
-		collision_object.shape = collision_shape
 	if raycast:
 		raycast.target_position.x = raycast_distance
+	if detector_collision_object and collision_shape:
+		detector_collision_object.shape = collision_shape
+
+func _on_collision_detector_area_entered(area: Area2D) -> void:
+	print("Collision!")
+	print(area.owner)
+	print(self)
+	area.owner.queue_free()
+	self.queue_free()
