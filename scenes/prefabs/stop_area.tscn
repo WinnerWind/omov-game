@@ -24,5 +24,4 @@ slowdown_speed = null
 collision_shape = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(396, 405)
 shape = SubResource("RectangleShape2D_sugp2")
