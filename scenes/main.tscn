@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bp6qss41chrho"]
+[gd_scene load_steps=8 format=3 uid="uid://bp6qss41chrho"]
 
 [ext_resource type="PackedScene" uid="uid://ctmkpurla8vot" path="res://scenes/prefabs/car.tscn" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://bl8poaryl3h53" path="res://scenes/prefabs/stop_area.tscn" id="2_sugp2"]
@@ -27,15 +27,9 @@ _data = {
 }
 point_count = 5
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_sugp2"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jyhfs"]
-size = Vector2(50, 50)
-
 [node name="Node2D" type="Node2D"]
 
 [node name="Stop Area" parent="." instance=ExtResource("2_sugp2")]
-stop_cars = false
 shape = SubResource("RectangleShape2D_tbgi4")
 
 [node name="CarSpawner" type="Node2D" parent="." node_paths=PackedStringArray("timer")]
@@ -48,6 +42,9 @@ timer = NodePath("Timer")
 
 [node name="Timer" type="Timer" parent="CarSpawner"]
 
-[node name="Car" parent="." instance=ExtResource("1_0wfyh")]
-texture = SubResource("CanvasTexture_sugp2")
-collision_shape = SubResource("RectangleShape2D_jyhfs")
+[node name="Button" type="CheckButton" parent="."]
+offset_right = 88.0
+offset_bottom = 135.0
+text = "Stop cars"
+
+[connection signal="toggled" from="Button" to="Stop Area" method="toggle_stopped_state"]

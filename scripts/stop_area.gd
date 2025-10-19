@@ -6,7 +6,7 @@ class_name StopArea
 	set(new_var):
 		stop_cars = new_var
 		if is_node_ready():
-			collision_shape.disabled = !stop_cars
+			collision_shape.set_deferred(&"disabled", !new_var)
 @export var shape:RectangleShape2D:
 	set(new):
 		shape = new
@@ -31,5 +31,7 @@ func _on_body_exited(body:Node2D):
 		var path:CarPath = body.get_parent().get_parent()
 		stopped_cars.erase(path)
 
+func toggle_stopped_state(state):
+	stop_cars = state
 func set_variables() -> void:
 	collision_shape.shape = shape

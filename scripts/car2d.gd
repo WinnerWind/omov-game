@@ -39,8 +39,8 @@ func set_variables():
 		detector_collision_object.shape = collision_shape
 
 func _on_collision_detector_area_entered(area: Area2D) -> void:
-	print("Collision!")
-	print(area.owner)
-	print(self)
-	area.owner.queue_free()
-	self.queue_free()
+	if not area is StopArea: #Ensure we collided with a car
+		var path:CarPath = area.owner
+		print("Collision!")
+		path.queue_free()
+		self.queue_free()
