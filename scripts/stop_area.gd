@@ -2,7 +2,11 @@
 extends Area2D
 class_name StopArea
 
-@export var stop_cars:bool
+@export var stop_cars:bool:
+	set(new_var):
+		stop_cars = new_var
+		if is_node_ready():
+			collision_shape.disabled = !stop_cars
 @export var shape:RectangleShape2D:
 	set(new):
 		shape = new
