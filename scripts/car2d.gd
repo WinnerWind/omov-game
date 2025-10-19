@@ -2,7 +2,10 @@
 extends Path2D
 class_name CarPath
 
-@export_custom(PROPERTY_HINT_NONE,"suffix:px/s") var speed:float
+var speed:float:
+	set(new_speed):
+		speed = new_speed if new_speed >= 0 else initial_speed
+@export_custom(PROPERTY_HINT_NONE, "suffix:px/s") var initial_speed:float
 @export_custom(PROPERTY_HINT_NONE, "suffix:px") var raycast_distance:float = 100:
 	set(new):
 		raycast_distance = new
@@ -24,6 +27,8 @@ class_name CarPath
 @export var raycast:RayCast2D
 
 var stopped:bool #Used to stop the car for various circumstances.
+func _ready() -> void:
+	speed = initial_speed
 func _process(delta: float) -> void:
 	if not Engine.is_editor_hint():
 		if not stopped and not raycast.is_colliding():
@@ -39,8 +44,8 @@ func set_variables():
 		detector_collision_object.shape = collision_shape
 
 func _on_collision_detector_area_entered(area: Area2D) -> void:
-	if not area is StopArea: #Ensure we collided with a car
+	if not area is SlowdownArea: #Ensure we collided with a car
 		var path:CarPath = area.owner
-		print("Collision!")
+		#print("Collision!")
 		path.queue_free()
 		self.queue_free()

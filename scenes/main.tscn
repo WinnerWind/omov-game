@@ -1,11 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://bp6qss41chrho"]
 
 [ext_resource type="PackedScene" uid="uid://ctmkpurla8vot" path="res://scenes/prefabs/car.tscn" id="1_0wfyh"]
+[ext_resource type="Script" uid="uid://dm1cwo4hquhf6" path="res://scripts/slowdown_areas.gd" id="2_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://bl8poaryl3h53" path="res://scenes/prefabs/stop_area.tscn" id="2_sugp2"]
 [ext_resource type="Script" uid="uid://cqp60ymv8d6c2" path="res://scripts/car_spawner.gd" id="3_sugp2"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbgi4"]
-size = Vector2(100, 100)
 
 [sub_resource type="Curve2D" id="Curve2D_sugp2"]
 resource_name = "Default"
@@ -30,7 +28,9 @@ point_count = 5
 [node name="Node2D" type="Node2D"]
 
 [node name="Stop Area" parent="." instance=ExtResource("2_sugp2")]
-shape = SubResource("RectangleShape2D_tbgi4")
+script = ExtResource("2_jyhfs")
+apply_effect = true
+slowdown_speed = 100.0
 
 [node name="CarSpawner" type="Node2D" parent="." node_paths=PackedStringArray("timer")]
 script = ExtResource("3_sugp2")

@@ -6,8 +6,11 @@
 size = Vector2(100, 100)
 
 [node name="Stop Area" type="Area2D" node_paths=PackedStringArray("collision_shape")]
+collision_layer = 0
+collision_mask = 3
 script = ExtResource("1_kn2g5")
-stop_cars = true
+apply_effect = null
+slowdown_speed = null
 collision_shape = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
