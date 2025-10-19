@@ -15,7 +15,7 @@ var speed:float:
 	set(new):
 		texture = new
 		if is_node_ready(): set_variables()
-@export var collision_shape:RectangleShape2D:
+@export var collision_shape:Shape2D:
 	set(new):
 		collision_shape = new
 		if is_node_ready(): set_variables()
@@ -46,6 +46,5 @@ func set_variables():
 func _on_collision_detector_area_entered(area: Area2D) -> void:
 	if not area is SlowdownArea: #Ensure we collided with a car
 		var path:CarPath = area.owner
-		#print("Collision!")
 		path.queue_free()
 		self.queue_free()

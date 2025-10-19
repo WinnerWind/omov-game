@@ -8,7 +8,7 @@ class_name SlowdownArea
 		if is_node_ready():
 			collision_shape.set_deferred(&"disabled", !apply_effect)
 @export var slowdown_speed:float
-@export var shape:RectangleShape2D:
+@export var shape:Shape2D:
 	set(new):
 		shape = new
 		if is_node_ready(): set_variables()
@@ -37,11 +37,9 @@ func _on_body_exited(body:Node2D):
 
 func path_entered(path:CarPath):
 	path.speed = slowdown_speed
-	print("%s %s"%[path.name, path.speed])
 
 func path_exited(path:CarPath):
 	path.speed = -1
-	print("%s %s"%[path.name, path.speed])
 
 
 func toggle_stopped_state(state):
