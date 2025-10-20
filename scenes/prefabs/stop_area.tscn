@@ -1,27 +1,18 @@
 [gd_scene load_steps=3 format=3 uid="uid://bl8poaryl3h53"]
 
-[sub_resource type="GDScript" id="GDScript_480gi"]
-script/source = "@tool
-extends SlowdownArea
-class_name StopArea
+[ext_resource type="Script" uid="uid://dm1cwo4hquhf6" path="res://scripts/slowdown_areas.gd" id="1_kn2g5"]
 
-func path_exited(_path:CarPath):
-	pass
-
-func path_entered(path:CarPath):
-	path.stopped = apply_effect
-"
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sugp2"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_480gi"]
 size = Vector2(100, 100)
 
 [node name="Stop Area" type="Area2D" node_paths=PackedStringArray("collision_shape")]
 collision_layer = 0
 collision_mask = 3
-script = SubResource("GDScript_480gi")
-apply_effect = null
-slowdown_speed = null
+script = ExtResource("1_kn2g5")
+apply_effect = true
+slowdown_speed = 100.0
+shape = SubResource("RectangleShape2D_480gi")
 collision_shape = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_sugp2")
+shape = SubResource("RectangleShape2D_480gi")
