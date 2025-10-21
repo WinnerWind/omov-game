@@ -1,18 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://bl8poaryl3h53"]
+[gd_scene load_steps=3 format=3 uid="uid://0ej7nf4ws53l"]
 
 [ext_resource type="Script" uid="uid://dm1cwo4hquhf6" path="res://scripts/slowdown_areas.gd" id="1_kn2g5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_480gi"]
 size = Vector2(100, 100)
 
-[node name="Stop Area" type="Area2D" node_paths=PackedStringArray("collision_shape")]
-collision_layer = 0
+[node name="Stop Area" type="Area2D" node_paths=PackedStringArray("collision_shape", "toggle_button")]
+collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_kn2g5")
 apply_effect = true
-slowdown_speed = 100.0
 shape = SubResource("RectangleShape2D_480gi")
 collision_shape = NodePath("CollisionShape2D")
+toggle_button = NodePath("CheckButton")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_480gi")
+
+[node name="CheckButton" type="CheckButton" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 5.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="toggled" from="CheckButton" to="." method="toggle_stopped_state"]

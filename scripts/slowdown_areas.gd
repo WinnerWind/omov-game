@@ -15,6 +15,7 @@ class_name SlowdownArea
 @export_tool_button("Reload All Visuals") var reload_visuals_script:Callable = set_variables
 @export_group("Internal")
 @export var collision_shape:CollisionShape2D
+@export var toggle_button:CheckButton
 var affected_cars:Array[CarPath]
 
 func _ready() -> void:
@@ -22,6 +23,8 @@ func _ready() -> void:
 	area_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
 	area_exited.connect(_on_body_exited)
+	if toggle_button:
+		toggle_button.size = shape.size
 
 func _on_body_entered(body:Node2D):
 	if body.owner is CarPath: #must be a car

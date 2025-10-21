@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bl8poaryl3h53"]
+
+[ext_resource type="Script" uid="uid://dm1cwo4hquhf6" path="res://scripts/slowdown_areas.gd" id="1_kn2g5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_480gi"]
+size = Vector2(100, 100)
+
+[node name="Stop Area" type="Area2D" node_paths=PackedStringArray("collision_shape")]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_kn2g5")
+apply_effect = true
+slowdown_speed = 100.0
+shape = SubResource("RectangleShape2D_480gi")
+collision_shape = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_480gi")
