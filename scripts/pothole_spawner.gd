@@ -1,10 +1,14 @@
 extends Polygon2D
 class_name PotholeSpawner ##The idea of a pothole spawner is kind of funny
 
-@export var scene:PackedScene
+@export var pothole_scene:PackedScene
+
 func _ready() -> void:
+	spawn_potholes()
+
+func spawn_potholes():
 	for i in 10:
-		var s := scene.instantiate()
+		var s := pothole_scene.instantiate()
 		add_child(s)
 		s.position = Triangle.get_random_point_in_polygon(polygon)
 

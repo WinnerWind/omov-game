@@ -12,6 +12,8 @@ var delay:
 @export var timer:Timer
 
 func _ready() -> void:
+	timer = Timer.new()
+	add_child(timer)
 	timer.timeout.connect(queue_spawn)
 	timer.start(delay)
 
