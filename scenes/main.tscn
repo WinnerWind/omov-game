@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bp6qss41chrho"]
+[gd_scene load_steps=7 format=3 uid="uid://bp6qss41chrho"]
 
 [ext_resource type="Script" uid="uid://bikrhnp7h2fj6" path="res://scripts/pothole_spawner.gd" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://dwnwtqxdffhvo" path="res://scripts/game_manager.gd" id="1_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://bl8poaryl3h53" path="res://scenes/prefabs/pothole.tscn" id="2_0wfyh"]
 [ext_resource type="Script" uid="uid://cqp60ymv8d6c2" path="res://scripts/car_spawner.gd" id="3_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://ctmkpurla8vot" path="res://scenes/prefabs/car.tscn" id="4_tbgi4"]
@@ -11,10 +12,14 @@ _data = {
 }
 point_count = 3
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("car_spawner", "pothole_spawner")]
+script = ExtResource("1_tbgi4")
+wave_number = 3
+car_spawner = NodePath("CarSpawner")
+pothole_spawner = NodePath("PotholeSpawner")
 
 [node name="PotholeSpawner" type="Polygon2D" parent="."]
-color = Color(1, 1, 1, 0)
+color = Color(1, 1, 1, 0.17254902)
 polygon = PackedVector2Array(495, 53, 574, 45, 600, 293, 1092, 254, 1107, 460, 617, 434, 667, 616, 210, 613, 316, 428, 62, 367, 134, 281, 487, 322)
 script = ExtResource("1_o5qli")
 pothole_scene = ExtResource("2_0wfyh")
