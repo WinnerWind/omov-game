@@ -5,6 +5,8 @@ class_name PotholeSpawner ##The idea of a pothole spawner is kind of funny
 @export var number_of_potholes_to_spawn:int
 
 func spawn_potholes():
+	for child in get_children():
+		if child is SlowdownArea: child.queue_free() #Clear old potholes
 	for i in number_of_potholes_to_spawn:
 		var s := pothole_scene.instantiate()
 		add_child(s)
