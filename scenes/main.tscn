@@ -14,7 +14,6 @@ point_count = 3
 
 [node name="Node2D" type="Node2D" node_paths=PackedStringArray("car_spawner", "pothole_spawner")]
 script = ExtResource("1_tbgi4")
-wave_number = 3
 car_spawner = NodePath("CarSpawner")
 pothole_spawner = NodePath("PotholeSpawner")
 

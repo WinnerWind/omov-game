@@ -1,13 +1,13 @@
 extends Node2D
 
-@export var wave_number:int
+@export var wave_number:int = 0
 
 var potholes_this_wave:int:
 	get:
 		if wave_number >= 5:
 			return int (
 				((pow(((wave_number + 4.2)/
-				100),1.1) ) + 5 ) * 5.9  - 17
+				100),1.1) ) + 5 ) * 5.9  - 25
 			) #nice formula senator, why don't you back it up with a source?
 		else: return 0 
 var cars_this_wave:int:
@@ -20,6 +20,7 @@ var cars_this_wave:int:
 @export var pothole_spawner:PotholeSpawner
 
 func wave_increase():
+	print("WAVE INCREASE --- No. %s - cars %s  potholes %s"%[wave_number,cars_this_wave,potholes_this_wave])
 	wave_number += 1
 	car_spawner.number_of_cars_to_spawn = cars_this_wave
 	car_spawner.queue_spawn()
