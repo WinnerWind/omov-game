@@ -26,4 +26,4 @@ func wave_increase():
 	car_spawner.queue_spawn()
 	
 	pothole_spawner.number_of_potholes_to_spawn = potholes_this_wave
-	pothole_spawner.spawn_potholes()
+	pothole_spawner.queue_spawn_pothole()

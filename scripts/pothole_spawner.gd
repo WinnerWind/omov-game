@@ -1,9 +1,22 @@
 extends Polygon2D
 class_name PotholeSpawner ##The idea of a pothole spawner is kind of funny
 
+@export var max_delay:float
+@export var min_delay:float
+var delay:
+	get:
+		return randf_range(min_delay,max_delay)
+@export_group("Nodes")
 @export var pothole_scene:PackedScene
 @export var number_of_potholes_to_spawn:int
+var potholes_spawned:int = 0
+var timer:Timer
 
+func _ready() -> void:
+	timer = Timer.new()
+	add_child(timer)
+	timer.timeout.connect(queue_spawn_pothole)
+	
 func spawn_potholes():
 	for child in get_children():
 		if child is SlowdownArea: child.queue_free() #Clear old potholes
@@ -11,6 +24,14 @@ func spawn_potholes():
 		var s := pothole_scene.instantiate()
 		add_child(s)
 		s.position = Triangle.get_random_point_in_polygon(polygon)
+
+func queue_spawn_pothole():
+	if not potholes_spawned >= number_of_potholes_to_spawn:
+		var s := pothole_scene.instantiate()
+		add_child(s)
+		s.position = Triangle.get_random_point_in_polygon(polygon)
+		timer.start(delay)
+		potholes_spawned += 1
 
 class Triangle:
 	#https://github.com/godotengine/godot-proposals/issues/13060

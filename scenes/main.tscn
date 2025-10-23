@@ -21,12 +21,14 @@ pothole_spawner = NodePath("PotholeSpawner")
 color = Color(1, 1, 1, 0.17254902)
 polygon = PackedVector2Array(495, 53, 574, 45, 600, 293, 1092, 254, 1107, 460, 617, 434, 667, 616, 210, 613, 316, 428, 62, 367, 134, 281, 487, 322)
 script = ExtResource("1_o5qli")
+max_delay = 60.0
+min_delay = 30.0
 pothole_scene = ExtResource("2_0wfyh")
 
 [node name="CarSpawner" type="Node2D" parent="."]
 script = ExtResource("3_jyhfs")
-max_delay = 0.1
-min_delay = 0.2
+max_delay = 1.0
+min_delay = 0.4
 curves = Array[Curve2D]([SubResource("Curve2D_jyhfs")])
 car_packed = ExtResource("4_tbgi4")
 metadata/_custom_type_script = "uid://cqp60ymv8d6c2"
