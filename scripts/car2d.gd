@@ -35,6 +35,8 @@ func _process(delta: float) -> void:
 			var distance = curve.get_baked_length()
 			var time_taken = distance/speed
 			path_follow.progress_ratio += delta / time_taken # Move object in time_taken seconds.
+			if path_follow.progress_ratio >= 0.99: #Reached the end of path
+				queue_free()
 func set_variables():
 	if sprite and texture:
 		sprite.texture = texture
