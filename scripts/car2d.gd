@@ -15,6 +15,10 @@ var speed:float:
 	set(new):
 		texture = new
 		if is_node_ready(): set_variables()
+@export var texture_scale:float:
+	set(new):
+		texture_scale = new
+		if is_node_ready(): set_variables()
 @export var collision_shape:Shape2D:
 	set(new):
 		collision_shape = new
@@ -40,10 +44,12 @@ func _process(delta: float) -> void:
 func set_variables():
 	if sprite and texture:
 		sprite.texture = texture
+		sprite.scale = Vector2i.ONE * texture_scale
 	if raycast:
 		raycast.target_position.x = raycast_distance
 	if detector_collision_object and collision_shape:
 		detector_collision_object.shape = collision_shape
+
 
 func _on_collision_detector_area_entered(area: Area2D) -> void:
 	if not area is SlowdownArea: #Ensure we collided with a car

@@ -35,8 +35,8 @@ pothole_scene = ExtResource("2_0wfyh")
 
 [node name="CarSpawner" type="Node2D" parent="."]
 script = ExtResource("3_jyhfs")
-max_delay = 1.0
-min_delay = 0.4
+max_delay = 2.0
+min_delay = 1.0
 curves = Array[Curve2D]([SubResource("Curve2D_jyhfs"), SubResource("Curve2D_tefeu")])
 car_packed = ExtResource("4_tbgi4")
 bus_packed = ExtResource("6_tefeu")
