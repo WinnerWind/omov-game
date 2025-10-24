@@ -22,7 +22,7 @@ var cars_this_wave:int:
 func wave_increase():
 	print("WAVE INCREASE --- No. %s - cars %s  potholes %s"%[wave_number,cars_this_wave,potholes_this_wave])
 	wave_number += 1
-	car_spawner.number_of_cars_to_spawn = cars_this_wave
+	car_spawner.number_of_vehicles_to_spawn = cars_this_wave
 	car_spawner.queue_spawn()
 	
 	pothole_spawner.number_of_potholes_to_spawn = potholes_this_wave
