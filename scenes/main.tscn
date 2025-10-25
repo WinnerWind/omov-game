@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bp6qss41chrho"]
+[gd_scene load_steps=16 format=3 uid="uid://bp6qss41chrho"]
 
 [ext_resource type="Script" uid="uid://bikrhnp7h2fj6" path="res://scripts/pothole_spawner.gd" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://dwnwtqxdffhvo" path="res://scripts/game_manager.gd" id="1_tbgi4"]
@@ -7,27 +7,63 @@
 [ext_resource type="PackedScene" uid="uid://ctmkpurla8vot" path="res://scenes/prefabs/vehicles/car.tscn" id="4_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://b8coxilqnsum0" path="res://scenes/prefabs/vehicles/bus.tscn" id="6_tefeu"]
 [ext_resource type="PackedScene" uid="uid://d2id2nwbly58y" path="res://scenes/prefabs/vehicles/bike.tscn" id="7_o6xl0"]
+[ext_resource type="Texture2D" uid="uid://bt0r1bo428iaf" path="res://assets/art/map-placeholder.svg" id="8_tipki"]
 
-[sub_resource type="Curve2D" id="Curve2D_jyhfs"]
+[sub_resource type="Curve2D" id="Curve2D_85g3d"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 149, 68, -306, 160, 306, -160, 421, 388, -171, -5, 171, 5, 672, 441)
+"points": PackedVector2Array(0, 0, 0, 0, -80, 73, -4.8499374, 4.217844, 4.8499374, -4.217844, 465, 261, 0, 0, 0, 0, 495, 73, 0, 0, 0, 0, 474, 15, 0, 0, 0, 0, 451, -35)
 }
-point_count = 3
+point_count = 5
 
-[sub_resource type="Curve2D" id="Curve2D_tefeu"]
+[sub_resource type="Curve2D" id="Curve2D_choun"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 149, 68, 207.89917, 25.302795, -207.89917, -25.302795, 409, 264, -171, -5, 171, 5, 672, 441)
+"points": PackedVector2Array(0, 0, 0, 0, -26, 139, 0, 0, 0, 0, 458, 319, 0, 0, 0, 0, 500, 73, 0, 0, 0, 0, 460, -11)
 }
-point_count = 3
+point_count = 4
+
+[sub_resource type="Curve2D" id="Curve2D_ya4ey"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -54, 121, 0, 0, 0, 0, 1298, 625)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_eb6dy"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -22, 82, 0, 0, 0, 0, 1355, 569)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_trceg"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 456, -29, 0, 0, 0, 0, 764, 743)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_a8y0u"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 482, -30, 0, 0, 0, 0, 809, 741)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_tipki"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 482, -30, 0, 0, 0, 0, 809, 741)
+}
+point_count = 2
 
 [node name="Node2D" type="Node2D" node_paths=PackedStringArray("car_spawner", "pothole_spawner")]
 script = ExtResource("1_tbgi4")
 car_spawner = NodePath("CarSpawner")
 pothole_spawner = NodePath("PotholeSpawner")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(631, 359)
+scale = Vector2(0.65925926, 0.65925926)
+texture = ExtResource("8_tipki")
+
 [node name="PotholeSpawner" type="Polygon2D" parent="."]
-color = Color(1, 1, 1, 0.17254902)
-polygon = PackedVector2Array(495, 53, 574, 45, 600, 293, 1092, 254, 1107, 460, 617, 434, 667, 616, 210, 613, 316, 428, 62, 367, 134, 281, 487, 322)
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(478, 0, 493, 2, 600, 293, 1228, 521, 1257, 584, 655, 396, 784, 694, 747, 698, 630, 380, -5, 150, -5, 116, 462, 248, 492, 104, 538, 218, 506, 273, 583, 303)
 script = ExtResource("1_o5qli")
 max_delay = 60.0
 min_delay = 30.0
@@ -35,9 +71,9 @@ pothole_scene = ExtResource("2_0wfyh")
 
 [node name="CarSpawner" type="Node2D" parent="."]
 script = ExtResource("3_jyhfs")
-max_delay = 2.0
-min_delay = 1.0
-curves = Array[Curve2D]([SubResource("Curve2D_jyhfs"), SubResource("Curve2D_tefeu")])
+max_delay = 1.0
+min_delay = 0.1
+curves = Array[Curve2D]([SubResource("Curve2D_85g3d"), SubResource("Curve2D_choun"), SubResource("Curve2D_ya4ey"), SubResource("Curve2D_eb6dy"), SubResource("Curve2D_trceg"), SubResource("Curve2D_a8y0u")])
 car_packed = ExtResource("4_tbgi4")
 bus_packed = ExtResource("6_tefeu")
 bike_packed = ExtResource("7_o6xl0")
@@ -49,5 +85,8 @@ offset_top = 54.0
 offset_right = 173.0
 offset_bottom = 85.0
 text = "Increase wave"
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_tipki")
 
 [connection signal="pressed" from="Button" to="." method="wave_increase"]
