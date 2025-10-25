@@ -24,6 +24,7 @@ func _ready() -> void:
 	timer.timeout.connect(queue_spawn)
 	timer.start(delay)
 
+var last_curve:Curve2D
 func queue_spawn() -> void:
 	if not vehicles_spawned >= number_of_vehicles_to_spawn:
 		var rand := randf()
@@ -34,7 +35,20 @@ func queue_spawn() -> void:
 			vehicle = bike_packed.instantiate()
 		else: #bus spawn
 			vehicle = bus_packed.instantiate()
-		vehicle.curve = curves.pick_random()
+		
+		var curve:Curve2D = curves.pick_random()
+		
+		#Find a unique curve so we don't spawn in the same place twice in a row
+		while curve == last_curve: curve = curves.pick_random()
+		last_curve = curve
+		vehicle.curve = curve
 		add_child(vehicle)
 		timer.start(delay)
 		vehicles_spawned += 1
+
+func reverse_curve2d_points(curve:Curve2D) -> Curve2D:
+	#https://forum.godotengine.org/t/can-we-reverse-path2d-direction-in-godot/50018
+	var new_curve=Curve2D.new()
+	for i in range(curve.point_count-1,-1,-1):
+		new_curve.add_point(curve.get_point_position(i))
+	return new_curve
