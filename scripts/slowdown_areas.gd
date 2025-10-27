@@ -39,7 +39,8 @@ func _on_body_exited(body:Node2D):
 		affected_cars.erase(path)
 
 func path_entered(path:CarPath):
-	path.speed = slowdown_speed
+	var new_speed := path.speed - slowdown_speed
+	path.speed = new_speed if new_speed > 0 else 25
 
 func path_exited(path:CarPath):
 	path.speed = -1
