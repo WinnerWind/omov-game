@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bp6qss41chrho"]
+[gd_scene load_steps=17 format=3 uid="uid://bp6qss41chrho"]
 
 [ext_resource type="Script" uid="uid://bikrhnp7h2fj6" path="res://scripts/pothole_spawner.gd" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://dwnwtqxdffhvo" path="res://scripts/game_manager.gd" id="1_tbgi4"]
@@ -11,45 +11,51 @@
 
 [sub_resource type="Curve2D" id="Curve2D_85g3d"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -80, 73, -4.8499374, 4.217844, 4.8499374, -4.217844, 465, 261, 0, 0, 0, 0, 495, 73, 0, 0, 0, 0, 474, 15, 0, 0, 0, 0, 451, -35)
+"points": PackedVector2Array(0, 0, 0, 0, 482, -30, 0, 0, 0, 0, 809, 741)
 }
-point_count = 5
+point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_choun"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -26, 139, 0, 0, 0, 0, 458, 319, 0, 0, 0, 0, 500, 73, 0, 0, 0, 0, 460, -11)
+"points": PackedVector2Array(0, 0, 0, 0, -171, 41, 0, 0, 0, 0, 1495, 613)
 }
-point_count = 4
+point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_ya4ey"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -54, 121, 0, 0, 0, 0, 1298, 625)
+"points": PackedVector2Array(0, 0, 0, 0, 1341, 641, 0, 0, 0, 0, -37, 143)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_eb6dy"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -22, 82, 0, 0, 0, 0, 1355, 569)
+"points": PackedVector2Array(0, 0, 0, 0, 753, 727, 0, 0, 0, 0, 454, -16)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_trceg"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 456, -29, 0, 0, 0, 0, 764, 743)
+"points": PackedVector2Array(0, 0, 0, 0, 753, 727, 30.613003, 25.289001, -30.613003, -25.289001, 608, 378, 0, 0, 0, 0, -24, 148)
 }
-point_count = 2
+point_count = 3
 
 [sub_resource type="Curve2D" id="Curve2D_a8y0u"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 482, -30, 0, 0, 0, 0, 809, 741)
+"points": PackedVector2Array(0, 0, 0, 0, 753, 727, -49.247, 17.303001, 49.247, -17.303001, 631, 327, 0, 0, 0, 0, 1288, 542)
 }
-point_count = 2
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_jkv2x"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 487, -22, -46.585003, -25.289001, 46.585003, 25.289001, 643, 316, 0, 0, 0, 0, 1288, 542)
+}
+point_count = 3
 
 [sub_resource type="Curve2D" id="Curve2D_tipki"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 482, -30, 0, 0, 0, 0, 809, 741)
+"points": PackedVector2Array(0, 0, 0, 0, 487, -22, -46.585003, -25.289001, 46.585003, 25.289001, 643, 316, 0, 0, 0, 0, 1288, 542)
 }
-point_count = 2
+point_count = 3
 
 [node name="Node2D" type="Node2D" node_paths=PackedStringArray("car_spawner", "pothole_spawner")]
 script = ExtResource("1_tbgi4")
@@ -73,7 +79,7 @@ pothole_scene = ExtResource("2_0wfyh")
 script = ExtResource("3_jyhfs")
 max_delay = 1.0
 min_delay = 0.1
-curves = Array[Curve2D]([SubResource("Curve2D_85g3d"), SubResource("Curve2D_choun"), SubResource("Curve2D_ya4ey"), SubResource("Curve2D_eb6dy"), SubResource("Curve2D_trceg"), SubResource("Curve2D_a8y0u")])
+curves = Array[Curve2D]([SubResource("Curve2D_85g3d"), SubResource("Curve2D_choun"), SubResource("Curve2D_ya4ey"), SubResource("Curve2D_eb6dy"), SubResource("Curve2D_trceg"), SubResource("Curve2D_a8y0u"), SubResource("Curve2D_jkv2x")])
 car_packed = ExtResource("4_tbgi4")
 bus_packed = ExtResource("6_tefeu")
 bike_packed = ExtResource("7_o6xl0")
