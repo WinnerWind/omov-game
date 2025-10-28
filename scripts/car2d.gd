@@ -24,6 +24,8 @@ var speed:float:
 		collision_shape = new
 		if is_node_ready(): set_variables()
 @export_tool_button("Reload All Visuals") var reload_visuals_script:Callable = set_variables
+@export_group("Car Modifiers")
+@export_range(0,1,0.1) var crash_car_in_pothole_chance:float = 0.0
 @export_group("Nodes")
 @export var sprite:Sprite2D
 @export var detector_collision_object:CollisionShape2D
@@ -50,9 +52,16 @@ func set_variables():
 	if detector_collision_object and collision_shape:
 		detector_collision_object.shape = collision_shape
 
+func crash() -> void:
+		self.queue_free()
+func entered_slowdown() -> void:
+	print("crash!")
+	var is_crash := randf_range(0,1) < crash_car_in_pothole_chance
+	print(is_crash)
+	if is_crash: crash()
 
 func _on_collision_detector_area_entered(area: Area2D) -> void:
 	if not area is SlowdownArea: #Ensure we collided with a car
 		var path:CarPath = area.owner
-		path.queue_free()
-		self.queue_free()
+		path.crash()
+		crash()

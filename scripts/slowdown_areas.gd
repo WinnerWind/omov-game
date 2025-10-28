@@ -40,7 +40,8 @@ func _on_body_exited(body:Node2D):
 
 func path_entered(path:CarPath):
 	var new_speed := path.speed - slowdown_speed
-	path.speed = new_speed if new_speed > 0 else 25
+	path.speed = new_speed if new_speed > 0 else 25.0
+	path.entered_slowdown()
 
 func path_exited(path:CarPath):
 	path.speed = -1

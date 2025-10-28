@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bp6qss41chrho"]
+[gd_scene load_steps=16 format=3 uid="uid://bp6qss41chrho"]
 
 [ext_resource type="Script" uid="uid://bikrhnp7h2fj6" path="res://scripts/pothole_spawner.gd" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://dwnwtqxdffhvo" path="res://scripts/game_manager.gd" id="1_tbgi4"]
@@ -51,12 +51,6 @@ _data = {
 }
 point_count = 3
 
-[sub_resource type="Curve2D" id="Curve2D_tipki"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 487, -22, -46.585003, -25.289001, 46.585003, 25.289001, 643, 316, 0, 0, 0, 0, 1288, 542)
-}
-point_count = 3
-
 [node name="Node2D" type="Node2D" node_paths=PackedStringArray("car_spawner", "pothole_spawner")]
 script = ExtResource("1_tbgi4")
 car_spawner = NodePath("CarSpawner")
@@ -93,6 +87,5 @@ offset_bottom = 85.0
 text = "Increase wave"
 
 [node name="Path2D" type="Path2D" parent="."]
-curve = SubResource("Curve2D_tipki")
 
 [connection signal="pressed" from="Button" to="." method="wave_increase"]
