@@ -16,14 +16,6 @@ func _ready() -> void:
 	timer = Timer.new()
 	add_child(timer)
 	timer.timeout.connect(queue_spawn_pothole)
-	
-func spawn_potholes():
-	for child in get_children():
-		if child is SlowdownArea: child.queue_free() #Clear old potholes
-	for i in number_of_potholes_to_spawn:
-		var s := pothole_scene.instantiate()
-		add_child(s)
-		s.position = Triangle.get_random_point_in_polygon(polygon)
 
 func queue_spawn_pothole():
 	if not potholes_spawned >= number_of_potholes_to_spawn:
@@ -32,6 +24,10 @@ func queue_spawn_pothole():
 		s.position = Triangle.get_random_point_in_polygon(polygon)
 		timer.start(delay)
 		potholes_spawned += 1
+	else:
+		for child in get_children(): if child is SlowdownArea: child.queue_free() #Clear old potholes
+		timer.start(delay)
+		potholes_spawned = 0
 
 class Triangle:
 	#https://github.com/godotengine/godot-proposals/issues/13060
