@@ -88,4 +88,5 @@ text = "Increase wave"
 
 [node name="Path2D" type="Path2D" parent="."]
 
+[connection signal="all_cars_cleared" from="CarSpawner" to="." method="wave_ended"]
 [connection signal="pressed" from="Button" to="." method="wave_increase"]

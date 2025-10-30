@@ -33,6 +33,10 @@ var speed:float:
 @export var raycast:RayCast2D
 
 var stopped:bool #Used to stop the car for various circumstances.
+
+signal crashed()
+signal path_complete()
+
 func _ready() -> void:
 	speed = initial_speed
 func _process(delta: float) -> void:
@@ -42,7 +46,8 @@ func _process(delta: float) -> void:
 			var time_taken = distance/speed
 			path_follow.progress_ratio += delta / time_taken # Move object in time_taken seconds.
 			if path_follow.progress_ratio >= 0.99: #Reached the end of path
-				queue_free()
+				path_complete.emit()
+				free()
 func set_variables():
 	if sprite and texture:
 		sprite.texture = texture
@@ -53,7 +58,9 @@ func set_variables():
 		detector_collision_object.shape = collision_shape
 
 func crash() -> void:
-		self.queue_free()
+	crashed.emit()
+	self.queue_free()
+
 func entered_slowdown() -> void:
 	print("crash!")
 	var is_crash := randf_range(0,1) < crash_car_in_pothole_chance

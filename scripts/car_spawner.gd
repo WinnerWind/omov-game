@@ -18,6 +18,9 @@ var delay:
 @export var bike_packed:PackedScene
 var timer:Timer
 
+signal all_cars_spawned()
+signal all_cars_cleared()
+
 func _ready() -> void:
 	timer = Timer.new()
 	add_child(timer)
@@ -38,6 +41,9 @@ func queue_spawn() -> void:
 		
 		var curve:Curve2D = curves.pick_random()
 		
+		vehicle.crashed.connect(check_all_cars_finished)
+		vehicle.path_complete.connect(check_all_cars_finished)
+		
 		#Find a unique curve so we don't spawn in the same place twice in a row
 		while curve == last_curve: curve = curves.pick_random()
 		last_curve = curve
@@ -45,6 +51,17 @@ func queue_spawn() -> void:
 		add_child(vehicle)
 		timer.start(delay)
 		vehicles_spawned += 1
+	else:
+		all_cars_spawned.emit()
+		
+
+func check_all_cars_finished():
+	await get_tree().process_frame
+	var cars:Array[CarPath]
+	for child in get_children():
+		if child is CarPath: cars.append(child)
+	if cars == []:
+		all_cars_cleared.emit()
 
 func reverse_curve2d_points(curve:Curve2D) -> Curve2D:
 	#https://forum.godotengine.org/t/can-we-reverse-path2d-direction-in-godot/50018
