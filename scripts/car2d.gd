@@ -61,10 +61,9 @@ func crash() -> void:
 	crashed.emit()
 	self.queue_free()
 
-func entered_slowdown() -> void:
-	print("crash!")
+func entered_slowdown(slowdown_speed:float) -> void:
 	var is_crash := randf_range(0,1) < crash_car_in_pothole_chance
-	print(is_crash)
+	speed = slowdown_speed
 	if is_crash: crash()
 
 func _on_collision_detector_area_entered(area: Area2D) -> void:
