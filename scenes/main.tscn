@@ -1,63 +1,118 @@
-[gd_scene load_steps=17 format=3 uid="uid://bp6qss41chrho"]
+[gd_scene load_steps=25 format=3 uid="uid://bp6qss41chrho"]
 
 [ext_resource type="Script" uid="uid://bikrhnp7h2fj6" path="res://scripts/pothole_spawner.gd" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://dwnwtqxdffhvo" path="res://scripts/game_manager.gd" id="1_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://bl8poaryl3h53" path="res://scenes/prefabs/pothole.tscn" id="2_0wfyh"]
 [ext_resource type="Script" uid="uid://cqp60ymv8d6c2" path="res://scripts/car_spawner.gd" id="3_jyhfs"]
-[ext_resource type="PackedScene" uid="uid://ctmkpurla8vot" path="res://scenes/prefabs/vehicles/car.tscn" id="4_tbgi4"]
 [ext_resource type="Script" uid="uid://d0g0a2kvadj5b" path="res://scripts/car_spawner_manager.gd" id="5_85g3d"]
-[ext_resource type="PackedScene" uid="uid://b8coxilqnsum0" path="res://scenes/prefabs/vehicles/bus.tscn" id="6_tefeu"]
-[ext_resource type="PackedScene" uid="uid://d2id2nwbly58y" path="res://scenes/prefabs/vehicles/bike.tscn" id="7_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://0ej7nf4ws53l" path="res://scenes/prefabs/stop_area.tscn" id="7_o6xl0"]
 [ext_resource type="Texture2D" uid="uid://bt0r1bo428iaf" path="res://assets/art/map-placeholder.svg" id="8_tipki"]
 
-[sub_resource type="Curve2D" id="Curve2D_85g3d"]
+[sub_resource type="Curve2D" id="Curve2D_tefeu"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 482, -30, 0, 0, 0, 0, 809, 741)
+"points": PackedVector2Array(0, 0, 0, 0, 453, -37, 0, 0, 0, 0, 498, 70, 0, 0, 0, 0, 463, 329, 0, 0, 0, 0, -90, 124)
 }
-point_count = 2
+point_count = 4
+
+[sub_resource type="Curve2D" id="Curve2D_o6xl0"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 453, -37, 0, 0, 0, 0, 498, 70, 0, 0, 0, 0, 478, 273, 0, 0, 0, 0, 1305, 547)
+}
+point_count = 4
+
+[sub_resource type="Curve2D" id="Curve2D_tipki"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 453, -37, 0, 0, 0, 0, 498, 70, 0, 0, 0, 0, 474, 268, 0, 0, 0, 0, 638, 313, 0, 0, 0, 0, 823, 740)
+}
+point_count = 5
 
 [sub_resource type="Curve2D" id="Curve2D_choun"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -171, 41, 0, 0, 0, 0, 1495, 613)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_ya4ey"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1341, 641, 0, 0, 0, 0, -37, 143)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_eb6dy"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 753, 727, 0, 0, 0, 0, 454, -16)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_trceg"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 753, 727, 30.613003, 25.289001, -30.613003, -25.289001, 608, 378, 0, 0, 0, 0, -24, 148)
+"points": PackedVector2Array(0, 0, 0, 0, 453, -37, 0, 0, 0, 0, 625, 360, 0, 0, 0, 0, -85, 125)
 }
 point_count = 3
 
-[sub_resource type="Curve2D" id="Curve2D_a8y0u"]
+[sub_resource type="Curve2D" id="Curve2D_2wyq8"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 753, 727, -49.247, 17.303001, 49.247, -17.303001, 631, 327, 0, 0, 0, 0, 1288, 542)
+"points": PackedVector2Array(0, 0, 0, 0, 453, -37, 0, 0, 0, 0, 591, 300, 0, 0, 0, 0, 1342, 561)
 }
 point_count = 3
 
-[sub_resource type="Curve2D" id="Curve2D_jkv2x"]
+[sub_resource type="Curve2D" id="Curve2D_vxglm"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 487, -22, -46.585003, -25.289001, 46.585003, 25.289001, 643, 316, 0, 0, 0, 0, 1288, 542)
+"points": PackedVector2Array(0, 0, 0, 0, 453, -37, 0, 0, 0, 0, 584, 296, 0, 0, 0, 0, 675, 402, 0, 0, 0, 0, 819, 732)
+}
+point_count = 4
+
+[sub_resource type="Curve2D" id="Curve2D_2f3dj"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1307, 614, 0, 0, 0, 0, 671, 396, 0, 0, 0, 0, 821, 745)
 }
 point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_yq6so"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1307, 614, 0, 0, 0, 0, -112, 111)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_fv21b"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1307, 614, 0, 0, 0, 0, 674, 400, 0, 0, 0, 0, 477, -30)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_tel4y"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -52, 79, 0, 0, 0, 0, 522, 279, 0, 0, 0, 0, 573, 189, 0, 0, 0, 0, 482, -28)
+}
+point_count = 4
+
+[sub_resource type="Curve2D" id="Curve2D_qkpxi"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -52, 79, 0, 0, 0, 0, 1317, 544)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_5q0nq"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -52, 79, 0, 0, 0, 0, 636, 315, 0, 0, 0, 0, 825, 758)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_dgi5k"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -52, 79, 0, 0, 0, 0, 637, 313, 0, 0, 0, 0, 484, -19)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_j8jky"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 826, 746, 0, 0, 0, 0, 669, 393, 0, 0, 0, 0, -37, 133)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_kmb1v"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 750, 729, 0, 0, 0, 0, 660, 362, 0, 0, 0, 0, 484, -9)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_fuf3a"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 750, 729, 0, 0, 0, 0, 594, 305, 0, 0, 0, 0, 1317, 553)
+}
+point_count = 3
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o6xl0"]
+size = Vector2(75, 100)
 
 [node name="Node2D" type="Node2D" node_paths=PackedStringArray("car_spawner", "pothole_spawner")]
 script = ExtResource("1_tbgi4")
 car_spawner = NodePath("Spanwers")
 pothole_spawner = NodePath("PotholeSpawner")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Map" type="Sprite2D" parent="."]
 position = Vector2(631, 359)
 scale = Vector2(0.65925926, 0.65925926)
 texture = ExtResource("8_tipki")
@@ -72,17 +127,76 @@ pothole_scene = ExtResource("2_0wfyh")
 
 [node name="Spanwers" type="Node2D" parent="." node_paths=PackedStringArray("spawners")]
 script = ExtResource("5_85g3d")
-spawners = [NodePath("North")]
+spawners = [NodePath("North"), NodePath("East"), NodePath("West"), NodePath("South")]
 
 [node name="North" type="Node2D" parent="Spanwers"]
 script = ExtResource("3_jyhfs")
-max_delay = 1.0
-min_delay = 0.1
-curves = Array[Curve2D]([SubResource("Curve2D_85g3d"), SubResource("Curve2D_choun"), SubResource("Curve2D_ya4ey"), SubResource("Curve2D_eb6dy"), SubResource("Curve2D_trceg"), SubResource("Curve2D_a8y0u"), SubResource("Curve2D_jkv2x")])
-car_packed = ExtResource("4_tbgi4")
-bus_packed = ExtResource("6_tefeu")
-bike_packed = ExtResource("7_o6xl0")
+max_delay = 3.0
+min_delay = 1.0
 metadata/_custom_type_script = "uid://cqp60ymv8d6c2"
+
+[node name="Path2D" type="Path2D" parent="Spanwers/North"]
+curve = SubResource("Curve2D_tefeu")
+
+[node name="Path2D2" type="Path2D" parent="Spanwers/North"]
+curve = SubResource("Curve2D_o6xl0")
+
+[node name="Path2D3" type="Path2D" parent="Spanwers/North"]
+curve = SubResource("Curve2D_tipki")
+
+[node name="Path2D4" type="Path2D" parent="Spanwers/North"]
+curve = SubResource("Curve2D_choun")
+
+[node name="Path2D5" type="Path2D" parent="Spanwers/North"]
+curve = SubResource("Curve2D_2wyq8")
+
+[node name="Path2D6" type="Path2D" parent="Spanwers/North"]
+curve = SubResource("Curve2D_vxglm")
+
+[node name="East" type="Node2D" parent="Spanwers"]
+script = ExtResource("3_jyhfs")
+max_delay = 3.0
+min_delay = 1.0
+
+[node name="Path2D" type="Path2D" parent="Spanwers/East"]
+curve = SubResource("Curve2D_2f3dj")
+
+[node name="Path2D2" type="Path2D" parent="Spanwers/East"]
+curve = SubResource("Curve2D_yq6so")
+
+[node name="Path2D3" type="Path2D" parent="Spanwers/East"]
+curve = SubResource("Curve2D_fv21b")
+
+[node name="West" type="Node2D" parent="Spanwers"]
+script = ExtResource("3_jyhfs")
+max_delay = 3.0
+min_delay = 1.0
+
+[node name="Path2D" type="Path2D" parent="Spanwers/West"]
+curve = SubResource("Curve2D_tel4y")
+
+[node name="Path2D2" type="Path2D" parent="Spanwers/West"]
+curve = SubResource("Curve2D_qkpxi")
+
+[node name="Path2D3" type="Path2D" parent="Spanwers/West"]
+curve = SubResource("Curve2D_5q0nq")
+
+[node name="Path2D4" type="Path2D" parent="Spanwers/West"]
+curve = SubResource("Curve2D_dgi5k")
+
+[node name="South" type="Node2D" parent="Spanwers"]
+script = ExtResource("3_jyhfs")
+max_delay = 3.0
+min_delay = 1.0
+
+[node name="Path2D" type="Path2D" parent="Spanwers/South"]
+curve = SubResource("Curve2D_j8jky")
+
+[node name="Path2D2" type="Path2D" parent="Spanwers/South"]
+curve = SubResource("Curve2D_kmb1v")
+
+[node name="Path2D3" type="Path2D" parent="Spanwers/South"]
+curve = SubResource("Curve2D_fuf3a")
 
 [node name="Button" type="Button" parent="."]
 offset_left = 55.0
@@ -91,6 +205,23 @@ offset_right = 173.0
 offset_bottom = 85.0
 text = "Increase wave"
 
-[node name="Path2D" type="Path2D" parent="."]
+[node name="Stop" type="Node2D" parent="."]
+
+[node name="Stop Area" parent="Stop" instance=ExtResource("7_o6xl0")]
+position = Vector2(390, 195)
+stop_car_entirely = true
+
+[node name="Stop Area2" parent="Stop" instance=ExtResource("7_o6xl0")]
+position = Vector2(809, 464)
+stop_car_entirely = true
+
+[node name="Stop Area3" parent="Stop" instance=ExtResource("7_o6xl0")]
+position = Vector2(659, 573)
+stop_car_entirely = true
+
+[node name="Stop Area4" parent="Stop" instance=ExtResource("7_o6xl0")]
+position = Vector2(511, 195)
+stop_car_entirely = true
+shape = SubResource("RectangleShape2D_o6xl0")
 
 [connection signal="pressed" from="Button" to="." method="wave_increase"]

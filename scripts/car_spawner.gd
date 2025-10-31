@@ -11,11 +11,13 @@ var vehicles_spawned:int = 0
 var delay:
 	get:
 		return randf_range(min_delay,max_delay)
-@export var curves:Array[Curve2D]
-@export_group("Internal")
-@export var car_packed:PackedScene
-@export var bus_packed:PackedScene
-@export var bike_packed:PackedScene
+
+var curves:Array[Curve2D]
+
+var car_packed:PackedScene = preload("res://scenes/prefabs/vehicles/car.tscn")
+var bus_packed:PackedScene = preload("res://scenes/prefabs/vehicles/bus.tscn")
+var bike_packed:PackedScene = preload("res://scenes/prefabs/vehicles/bike.tscn")
+
 var timer:Timer
 var spawner_signal_emitted:bool
 
@@ -23,6 +25,11 @@ signal all_cars_spawned()
 signal all_cars_cleared()
 
 func _ready() -> void:
+	# fetch paths from child Path2Ds
+	for child in get_children():
+		if child is Path2D and child.curve:
+			curves.append(child.curve)
+	
 	timer = Timer.new()
 	add_child(timer)
 	timer.timeout.connect(queue_spawn)
@@ -59,6 +66,8 @@ func queue_spawn() -> void:
 func check_all_cars_finished():
 	await get_tree().process_frame
 	var cars:Array[CarPath]
+	if not vehicles_spawned >= number_of_vehicles_to_spawn: #still cars to spawn
+		return 
 	for child in get_children():
 		if child is CarPath: cars.append(child)
 	if cars == []:
