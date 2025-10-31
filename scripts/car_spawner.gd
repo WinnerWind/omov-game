@@ -17,6 +17,7 @@ var delay:
 @export var bus_packed:PackedScene
 @export var bike_packed:PackedScene
 var timer:Timer
+var spawner_signal_emitted:bool
 
 signal all_cars_spawned()
 signal all_cars_cleared()
@@ -27,9 +28,10 @@ func _ready() -> void:
 	timer.timeout.connect(queue_spawn)
 	timer.start(delay)
 
-var last_curve:Curve2D
+
 func queue_spawn() -> void:
 	if not vehicles_spawned >= number_of_vehicles_to_spawn:
+		spawner_signal_emitted = false
 		var rand := randf()
 		var vehicle:CarPath
 		if rand < 0.2: #car spawn
@@ -44,15 +46,14 @@ func queue_spawn() -> void:
 		vehicle.crashed.connect(check_all_cars_finished)
 		vehicle.path_complete.connect(check_all_cars_finished)
 		
-		#Find a unique curve so we don't spawn in the same place twice in a row
-		while curve == last_curve: curve = curves.pick_random()
-		last_curve = curve
 		vehicle.curve = curve
 		add_child(vehicle)
 		timer.start(delay)
 		vehicles_spawned += 1
 	else:
-		all_cars_spawned.emit()
+		if not spawner_signal_emitted:
+			all_cars_spawned.emit()
+			spawner_signal_emitted = true
 		
 
 func check_all_cars_finished():

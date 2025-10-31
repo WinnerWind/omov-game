@@ -16,14 +16,14 @@ var cars_this_wave:int:
 			(wave_number + 10) / 0.2 * pow(1.2,0.2)
 		)
 @export_group("Nodes")
-@export var car_spawner:CarSpawner
+@export var car_spawner:CarSpawnerManager
 @export var pothole_spawner:PotholeSpawner
 
 func wave_increase():
 	print("WAVE INCREASE --- No. %s - cars %s  potholes %s"%[wave_number,cars_this_wave,potholes_this_wave])
 	wave_number += 1
 	car_spawner.number_of_vehicles_to_spawn = cars_this_wave
-	car_spawner.queue_spawn()
+	car_spawner.increase_wave()
 	
 	pothole_spawner.number_of_potholes_to_spawn = potholes_this_wave
 	pothole_spawner.queue_spawn_pothole()

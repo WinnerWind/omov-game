@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://bp6qss41chrho"]
+[gd_scene load_steps=17 format=3 uid="uid://bp6qss41chrho"]
 
 [ext_resource type="Script" uid="uid://bikrhnp7h2fj6" path="res://scripts/pothole_spawner.gd" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://dwnwtqxdffhvo" path="res://scripts/game_manager.gd" id="1_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://bl8poaryl3h53" path="res://scenes/prefabs/pothole.tscn" id="2_0wfyh"]
 [ext_resource type="Script" uid="uid://cqp60ymv8d6c2" path="res://scripts/car_spawner.gd" id="3_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://ctmkpurla8vot" path="res://scenes/prefabs/vehicles/car.tscn" id="4_tbgi4"]
+[ext_resource type="Script" uid="uid://d0g0a2kvadj5b" path="res://scripts/car_spawner_manager.gd" id="5_85g3d"]
 [ext_resource type="PackedScene" uid="uid://b8coxilqnsum0" path="res://scenes/prefabs/vehicles/bus.tscn" id="6_tefeu"]
 [ext_resource type="PackedScene" uid="uid://d2id2nwbly58y" path="res://scenes/prefabs/vehicles/bike.tscn" id="7_o6xl0"]
 [ext_resource type="Texture2D" uid="uid://bt0r1bo428iaf" path="res://assets/art/map-placeholder.svg" id="8_tipki"]
@@ -53,7 +54,7 @@ point_count = 3
 
 [node name="Node2D" type="Node2D" node_paths=PackedStringArray("car_spawner", "pothole_spawner")]
 script = ExtResource("1_tbgi4")
-car_spawner = NodePath("CarSpawner")
+car_spawner = NodePath("Spanwers")
 pothole_spawner = NodePath("PotholeSpawner")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -69,7 +70,11 @@ max_delay = 60.0
 min_delay = 30.0
 pothole_scene = ExtResource("2_0wfyh")
 
-[node name="CarSpawner" type="Node2D" parent="."]
+[node name="Spanwers" type="Node2D" parent="." node_paths=PackedStringArray("spawners")]
+script = ExtResource("5_85g3d")
+spawners = [NodePath("North")]
+
+[node name="North" type="Node2D" parent="Spanwers"]
 script = ExtResource("3_jyhfs")
 max_delay = 1.0
 min_delay = 0.1
@@ -88,5 +93,4 @@ text = "Increase wave"
 
 [node name="Path2D" type="Path2D" parent="."]
 
-[connection signal="all_cars_cleared" from="CarSpawner" to="." method="wave_ended"]
 [connection signal="pressed" from="Button" to="." method="wave_increase"]
