@@ -23,6 +23,7 @@ var collision_shape:Shape2D
 @export_tool_button("Reload All Visuals") var reload_visuals_script:Callable = set_variables
 @export_group("Car Modifiers")
 @export_range(0,1,0.1) var crash_car_in_pothole_chance:float = 0.0
+@export var ignore_stop_signs:bool = false
 @export_group("Nodes")
 @export var sprite:Sprite2D
 @export var detector_collision_object:CollisionShape2D
@@ -62,7 +63,7 @@ func crash() -> void:
 
 func entered_slowdown(slowdown_speed:float) -> void:
 	var is_crash := randf_range(0,1) < crash_car_in_pothole_chance
-	speed = slowdown_speed
+	speed = slowdown_speed if not ignore_stop_signs and slowdown_speed == 0 else speed
 	if is_crash: crash()
 
 func _on_collision_detector_area_entered(area: Area2D) -> void:

@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://8acee8s0ojtp"]
+
+[ext_resource type="Script" uid="uid://pbyp0y4w8tjd" path="res://scripts/car2d.gd" id="1_vhurj"]
+[ext_resource type="Texture2D" uid="uid://dwj5yhitv0khl" path="res://assets/art/ambulance-placeholder.svg" id="2_vhurj"]
+
+[sub_resource type="Curve2D" id="Curve2D_0wfyh"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 149, 68, -306, 160, 306, -160, 421, 388, -171, -5, 171, 5, 672, 441)
+}
+point_count = 3
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7vhkj"]
+size = Vector2(37.5, 26.7)
+
+[node name="Ambulance" type="Path2D" node_paths=PackedStringArray("sprite", "detector_collision_object", "path_follow", "raycast")]
+curve = SubResource("Curve2D_0wfyh")
+script = ExtResource("1_vhurj")
+initial_speed = 200.0
+texture = ExtResource("2_vhurj")
+texture_scale = 0.3
+ignore_stop_signs = true
+sprite = NodePath("PathFollow2D/Car/Sprite")
+detector_collision_object = NodePath("PathFollow2D/Collision Detector/CollisionShape2D")
+path_follow = NodePath("PathFollow2D")
+raycast = NodePath("PathFollow2D/Car/Raycast")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(149, 68)
+rotation = 1.6415116
+loop = false
+
+[node name="Collision Detector" type="Area2D" parent="PathFollow2D"]
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/Collision Detector"]
+shape = SubResource("RectangleShape2D_7vhkj")
+
+[node name="Car" type="CharacterBody2D" parent="PathFollow2D"]
+
+[node name="Sprite" type="Sprite2D" parent="PathFollow2D/Car"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_vhurj")
+
+[node name="Raycast" type="RayCast2D" parent="PathFollow2D/Car"]
+target_position = Vector2(100, 0)
+collide_with_areas = true
+
+[connection signal="area_entered" from="PathFollow2D/Collision Detector" to="." method="_on_collision_detector_area_entered"]

@@ -17,6 +17,7 @@ var curves:Array[Curve2D]
 var car_packed:PackedScene = preload("res://scenes/prefabs/vehicles/car.tscn")
 var bus_packed:PackedScene = preload("res://scenes/prefabs/vehicles/bus.tscn")
 var bike_packed:PackedScene = preload("res://scenes/prefabs/vehicles/bike.tscn")
+var ambulance_packed:PackedScene = preload("res://scenes/prefabs/vehicles/ambulance.tscn")
 
 var timer:Timer
 var spawner_signal_emitted:bool
@@ -45,6 +46,8 @@ func queue_spawn() -> void:
 			vehicle = car_packed.instantiate()
 		elif rand < 0.5: #bike spawn
 			vehicle = bike_packed.instantiate()
+		elif rand > 0.9: #ambulance spawn
+			vehicle = ambulance_packed.instantiate()
 		else: #bus spawn
 			vehicle = bus_packed.instantiate()
 		
