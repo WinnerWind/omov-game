@@ -19,10 +19,7 @@ var speed:float:
 	set(new):
 		texture_scale = new
 		if is_node_ready(): set_variables()
-@export var collision_shape:Shape2D:
-	set(new):
-		collision_shape = new
-		if is_node_ready(): set_variables()
+var collision_shape:Shape2D
 @export_tool_button("Reload All Visuals") var reload_visuals_script:Callable = set_variables
 @export_group("Car Modifiers")
 @export_range(0,1,0.1) var crash_car_in_pothole_chance:float = 0.0
@@ -54,6 +51,10 @@ func set_variables():
 		raycast.target_position.x = raycast_distance
 	if detector_collision_object and collision_shape:
 		detector_collision_object.shape = collision_shape
+	if sprite and texture and detector_collision_object:
+		var shape = RectangleShape2D.new()
+		shape.size = texture.get_size() * sprite.scale
+		detector_collision_object.shape = shape
 
 func crash() -> void:
 	crashed.emit()

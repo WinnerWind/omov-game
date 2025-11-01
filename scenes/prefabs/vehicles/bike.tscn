@@ -9,16 +9,15 @@ _data = {
 }
 point_count = 3
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1d5yk"]
-size = Vector2(55, 30)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hkgtj"]
+size = Vector2(33.9, 17.1)
 
 [node name="Car" type="Path2D" node_paths=PackedStringArray("sprite", "detector_collision_object", "path_follow", "raycast")]
 curve = SubResource("Curve2D_0wfyh")
 script = ExtResource("1_odnmy")
 initial_speed = 200.0
 texture = ExtResource("2_hkgtj")
-texture_scale = 0.5
-collision_shape = SubResource("RectangleShape2D_1d5yk")
+texture_scale = 0.3
 sprite = NodePath("PathFollow2D/Car/Sprite")
 detector_collision_object = NodePath("PathFollow2D/Collision Detector/CollisionShape2D")
 path_follow = NodePath("PathFollow2D")
@@ -33,12 +32,12 @@ loop = false
 collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/Collision Detector"]
-shape = SubResource("RectangleShape2D_1d5yk")
+shape = SubResource("RectangleShape2D_hkgtj")
 
 [node name="Car" type="CharacterBody2D" parent="PathFollow2D"]
 
 [node name="Sprite" type="Sprite2D" parent="PathFollow2D/Car"]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_hkgtj")
 
 [node name="Raycast" type="RayCast2D" parent="PathFollow2D/Car"]
