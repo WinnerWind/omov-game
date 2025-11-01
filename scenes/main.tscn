@@ -88,15 +88,15 @@ point_count = 3
 
 [sub_resource type="Curve2D" id="Curve2D_j8jky"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 826, 746, 0, 0, 0, 0, 669, 393, 0, 0, 0, 0, -37, 133)
+"points": PackedVector2Array(0, 0, 0, 0, 747, 735, 0, 0, 0, 0, 615, 364, 0, 0, 0, 0, -37, 133)
 }
 point_count = 3
 
 [sub_resource type="Curve2D" id="Curve2D_kmb1v"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 750, 729, 0, 0, 0, 0, 660, 362, 0, 0, 0, 0, 484, -9)
+"points": PackedVector2Array(0, 0, 0, 0, 750, 729, 0, 0, 0, 0, 613, 364, 0, 0, 0, 0, 647, 347, 0, 0, 0, 0, 484, -9)
 }
-point_count = 3
+point_count = 4
 
 [sub_resource type="Curve2D" id="Curve2D_fuf3a"]
 _data = {
