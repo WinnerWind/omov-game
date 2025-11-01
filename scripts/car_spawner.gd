@@ -43,14 +43,20 @@ func queue_spawn() -> void:
 		var rand := randf()
 		var vehicle:CarPath
 		if rand < 0.2: #car spawn
+			# 20% chance
 			vehicle = car_packed.instantiate()
 		elif rand < 0.5: #bike spawn
+			# 0.2 - 0.5
+			# 30% chance
 			vehicle = bike_packed.instantiate()
-		elif rand > 0.9: #ambulance spawn
-			vehicle = ambulance_packed.instantiate()
-		else: #bus spawn
+		elif rand < 0.9: #ambulance spawn
+			#0.5 - 0.9
+			# 40% chance
 			vehicle = bus_packed.instantiate()
-		
+		else: #bus spawn
+			#10% chance
+			vehicle = ambulance_packed.instantiate()
+
 		var curve:Curve2D = curves.pick_random()
 		
 		vehicle.crashed.connect(check_all_cars_finished)
