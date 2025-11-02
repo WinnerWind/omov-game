@@ -29,6 +29,17 @@ func queue_spawn_pothole():
 		timer.start(delay)
 		potholes_spawned = 0
 
+func clear_random_pothole() -> bool:
+	var children := get_children().filter(func(c): return c is SlowdownArea)
+	var chance := randf() > 0.5 #50% chance of clearing
+	if children == []: return false #no potholes
+	var cleared_pothole:SlowdownArea = children.pick_random()
+	if cleared_pothole:
+		if chance:
+			cleared_pothole.queue_free()
+		return true #successful, waste powerup if chance failed.
+	else: return false #Pothole could not be cleared
+
 class Triangle:
 	#https://github.com/godotengine/godot-proposals/issues/13060
 	var _p1 : Vector2

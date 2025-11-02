@@ -15,6 +15,9 @@ var cars_this_wave:int:
 		return int(
 			(wave_number + 10) / 0.2 * pow(1.2,0.2)
 		)
+
+@export var pothole_powerup_uses:int = 10
+
 @export_group("Nodes")
 @export var car_spawner:CarSpawnerManager
 @export var pothole_spawner:PotholeSpawner
@@ -31,3 +34,9 @@ func wave_increase():
 func wave_ended():
 	print("Wave has ended!")
 	wave_increase()
+
+func use_pothole_powerup() -> void:
+	if pothole_powerup_uses > 0:
+		var cleared:bool = %PotholeSpawner.clear_random_pothole()
+		if cleared: pothole_powerup_uses -= 1
+		else: pass #cannot clear the pothole

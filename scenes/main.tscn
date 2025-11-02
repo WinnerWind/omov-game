@@ -118,6 +118,7 @@ scale = Vector2(0.65925926, 0.65925926)
 texture = ExtResource("8_tipki")
 
 [node name="PotholeSpawner" type="Polygon2D" parent="."]
+unique_name_in_owner = true
 color = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(478, 0, 493, 2, 600, 293, 1228, 521, 1257, 584, 655, 396, 784, 694, 747, 698, 630, 380, -5, 150, -5, 116, 462, 248, 492, 104, 538, 218, 506, 273, 583, 303)
 script = ExtResource("1_o5qli")
@@ -198,7 +199,7 @@ curve = SubResource("Curve2D_kmb1v")
 [node name="Path2D3" type="Path2D" parent="Spanwers/South"]
 curve = SubResource("Curve2D_fuf3a")
 
-[node name="Button" type="Button" parent="."]
+[node name="Wave Increase" type="Button" parent="."]
 offset_left = 55.0
 offset_top = 54.0
 offset_right = 173.0
@@ -224,4 +225,12 @@ position = Vector2(511, 195)
 stop_car_entirely = true
 shape = SubResource("RectangleShape2D_o6xl0")
 
-[connection signal="pressed" from="Button" to="." method="wave_increase"]
+[node name="Powerup 1" type="Button" parent="."]
+offset_left = 37.0
+offset_top = 630.0
+offset_right = 157.0
+offset_bottom = 661.0
+text = "Clear Potholes"
+
+[connection signal="pressed" from="Wave Increase" to="." method="wave_increase"]
+[connection signal="pressed" from="Powerup 1" to="." method="use_pothole_powerup"]
