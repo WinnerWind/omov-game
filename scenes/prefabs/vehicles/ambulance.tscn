@@ -16,6 +16,7 @@ size = Vector2(37.5, 26.7)
 curve = SubResource("Curve2D_0wfyh")
 script = ExtResource("1_vhurj")
 initial_speed = 200.0
+slowdown_speed = 100.0
 texture = ExtResource("2_vhurj")
 texture_scale = 0.3
 ignore_stop_signs = true

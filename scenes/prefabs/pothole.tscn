@@ -10,7 +10,7 @@ collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_kn2g5")
 apply_effect = true
-slowdown_speed = 50.0
+slowdown_speed = 100.0
 shape = SubResource("RectangleShape2D_480gi")
 collision_shape = NodePath("CollisionShape2D")
 

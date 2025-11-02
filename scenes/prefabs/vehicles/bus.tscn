@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8coxilqnsum0"]
+[gd_scene load_steps=5 format=3 uid="uid://b8coxilqnsum0"]
 
 [ext_resource type="Script" uid="uid://pbyp0y4w8tjd" path="res://scripts/car2d.gd" id="1_g6wq1"]
 [ext_resource type="Texture2D" uid="uid://d2n81hwvrk40" path="res://assets/art/bus-placeholder.svg" id="2_2thgs"]
@@ -9,9 +9,6 @@ _data = {
 }
 point_count = 3
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1d5yk"]
-size = Vector2(65, 50)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2thgs"]
 size = Vector2(43.75, 31.15)
 
@@ -19,9 +16,9 @@ size = Vector2(43.75, 31.15)
 curve = SubResource("Curve2D_0wfyh")
 script = ExtResource("1_g6wq1")
 initial_speed = 50.0
+slowdown_speed = 25.0
 texture = ExtResource("2_2thgs")
 texture_scale = 0.35
-collision_shape = SubResource("RectangleShape2D_1d5yk")
 crash_car_in_pothole_chance = 0.1
 sprite = NodePath("PathFollow2D/Car/Sprite")
 detector_collision_object = NodePath("PathFollow2D/Collision Detector/CollisionShape2D")

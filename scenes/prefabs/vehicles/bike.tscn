@@ -16,6 +16,7 @@ size = Vector2(33.9, 17.1)
 curve = SubResource("Curve2D_0wfyh")
 script = ExtResource("1_odnmy")
 initial_speed = 200.0
+slowdown_speed = 100.0
 texture = ExtResource("2_hkgtj")
 texture_scale = 0.3
 sprite = NodePath("PathFollow2D/Car/Sprite")

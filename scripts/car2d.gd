@@ -6,6 +6,7 @@ var speed:float:
 	set(new_speed):
 		speed = new_speed if new_speed >= 0 else initial_speed
 @export_custom(PROPERTY_HINT_NONE, "suffix:px/s") var initial_speed:float
+@export_custom(PROPERTY_HINT_NONE, "suffix:px/s") var slowdown_speed:float = 50
 @export_custom(PROPERTY_HINT_NONE, "suffix:px") var raycast_distance:float = 100:
 	set(new):
 		raycast_distance = new
@@ -61,10 +62,16 @@ func crash() -> void:
 	crashed.emit()
 	self.queue_free()
 
-func entered_slowdown(slowdown_speed:float) -> void:
+func entered_slowdown() -> void:
 	var is_crash := randf_range(0,1) < crash_car_in_pothole_chance
-	speed = slowdown_speed if not ignore_stop_signs and slowdown_speed == 0 else speed
+	speed = slowdown_speed
 	if is_crash: crash()
+
+func entered_stop() -> void:
+	if ignore_stop_signs:
+		pass
+	else: #pay heed to stop signs
+		speed = 0
 
 func _on_collision_detector_area_entered(area: Area2D) -> void:
 	if not area is SlowdownArea: #Ensure we collided with a car

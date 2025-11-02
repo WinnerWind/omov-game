@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ctmkpurla8vot"]
+[gd_scene load_steps=5 format=3 uid="uid://ctmkpurla8vot"]
 
 [ext_resource type="Script" uid="uid://pbyp0y4w8tjd" path="res://scripts/car2d.gd" id="1_1d5yk"]
 [ext_resource type="Texture2D" uid="uid://desqp67lb5m7r" path="res://assets/art/car-placeholder.svg" id="2_j36od"]
@@ -9,9 +9,6 @@ _data = {
 }
 point_count = 3
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1d5yk"]
-size = Vector2(55, 40)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j36od"]
 size = Vector2(32.7, 23.1)
 
@@ -21,7 +18,6 @@ script = ExtResource("1_1d5yk")
 initial_speed = 100.0
 texture = ExtResource("2_j36od")
 texture_scale = 0.3
-collision_shape = SubResource("RectangleShape2D_1d5yk")
 sprite = NodePath("PathFollow2D/Car/Sprite")
 detector_collision_object = NodePath("PathFollow2D/Collision Detector/CollisionShape2D")
 path_follow = NodePath("PathFollow2D")
