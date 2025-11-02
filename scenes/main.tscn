@@ -232,5 +232,6 @@ offset_right = 157.0
 offset_bottom = 661.0
 text = "Clear Potholes"
 
+[connection signal="all_cars_cleared" from="Spanwers" to="." method="wave_ended"]
 [connection signal="pressed" from="Wave Increase" to="." method="wave_increase"]
 [connection signal="pressed" from="Powerup 1" to="." method="use_pothole_powerup"]
