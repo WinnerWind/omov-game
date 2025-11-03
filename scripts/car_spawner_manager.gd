@@ -35,7 +35,7 @@ func _spawner_cars_spawned():
 	if spawners_complete == spawners.size():
 		all_cars_spawned.emit()
 
-func bbmp_powerup_used() -> void:
+func _bbmp_powerup_used() -> void:
 	print("BBMP used!")
 	for spawner in spawners:
 		spawner.only_spawn_buses = true
