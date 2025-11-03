@@ -24,6 +24,7 @@ func _ready() -> void:
 	area_exited.connect(_on_body_exited)
 	if toggle_button:
 		toggle_button.size = shape.size
+	set_variables()
 
 func _on_body_entered(body:Node2D):
 	if body.owner is CarPath: #must be a car
