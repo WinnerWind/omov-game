@@ -17,6 +17,7 @@ curve = SubResource("Curve2D_0wfyh")
 script = ExtResource("1_odnmy")
 initial_speed = 200.0
 slowdown_speed = 100.0
+raycast_distance = 30.0
 texture = ExtResource("2_hkgtj")
 texture_scale = 0.3
 sprite = NodePath("PathFollow2D/Car/Sprite")
@@ -42,7 +43,7 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_hkgtj")
 
 [node name="Raycast" type="RayCast2D" parent="PathFollow2D/Car"]
-target_position = Vector2(100, 0)
+target_position = Vector2(30, 0)
 collide_with_areas = true
 
 [connection signal="area_entered" from="PathFollow2D/Collision Detector" to="." method="_on_collision_detector_area_entered"]
