@@ -36,7 +36,7 @@ func _ready() -> void:
 	timer.timeout.connect(queue_spawn)
 	timer.start(delay)
 
-
+var only_spawn_buses:bool
 func queue_spawn() -> void:
 	if $SpawnChecker.has_overlapping_areas():
 		return
@@ -44,21 +44,24 @@ func queue_spawn() -> void:
 		spawner_signal_emitted = false
 		var rand := randf()
 		var vehicle:CarPath
-		if rand < 0.2: #car spawn
-			# 20% chance
-			vehicle = car_packed.instantiate()
-		elif rand < 0.5: #bike spawn
-			# 0.2 - 0.5
-			# 30% chance
-			vehicle = bike_packed.instantiate()
-		elif rand < 0.9: #ambulance spawn
-			#0.5 - 0.9
-			# 40% chance
+		if not only_spawn_buses:
+			if rand < 0.2: #car spawn
+				# 20% chance
+				vehicle = car_packed.instantiate()
+			elif rand < 0.5: #bike spawn
+				# 0.2 - 0.5
+				# 30% chance
+				vehicle = bike_packed.instantiate()
+			elif rand < 0.9: #ambulance spawn
+				#0.5 - 0.9
+				# 40% chance
+				vehicle = bus_packed.instantiate()
+			else: #bus spawn
+				#10% chance
+				vehicle = ambulance_packed.instantiate()
+		else: #Only spawn buses
 			vehicle = bus_packed.instantiate()
-		else: #bus spawn
-			#10% chance
-			vehicle = ambulance_packed.instantiate()
-
+		
 		var curve:Curve2D = curves.pick_random()
 		
 		vehicle.crashed.connect(check_all_cars_finished)

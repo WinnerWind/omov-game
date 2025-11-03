@@ -135,6 +135,7 @@ pothole_scene = ExtResource("2_0wfyh")
 [node name="Spanwers" type="Node2D" parent="." node_paths=PackedStringArray("spawners")]
 script = ExtResource("5_85g3d")
 spawners = [NodePath("North"), NodePath("East"), NodePath("West"), NodePath("South")]
+bbmp_powerup_time = 5.0
 
 [node name="North" type="Node2D" parent="Spanwers"]
 script = ExtResource("3_jyhfs")
@@ -267,6 +268,15 @@ offset_right = 157.0
 offset_bottom = 661.0
 text = "Clear Potholes"
 
+[node name="BBMP Powerup" type="Button" parent="."]
+offset_left = 37.0
+offset_top = 661.0
+offset_right = 157.0
+offset_bottom = 692.0
+text = "BBMP Powerup"
+
+[connection signal="bbmp_powerup_used" from="." to="Spanwers" method="bbmp_powerup_used"]
 [connection signal="all_cars_cleared" from="Spanwers" to="." method="wave_ended"]
 [connection signal="pressed" from="Wave Increase" to="." method="wave_increase"]
 [connection signal="pressed" from="Powerup 1" to="." method="use_pothole_powerup"]
+[connection signal="pressed" from="BBMP Powerup" to="." method="use_bbmp_powerup"]

@@ -17,10 +17,13 @@ var cars_this_wave:int:
 		)
 
 @export var pothole_powerup_uses:int = 10
+@export var bbmp_powerup_uses:int = 10
 
 @export_group("Nodes")
 @export var car_spawner:CarSpawnerManager
 @export var pothole_spawner:PotholeSpawner
+
+signal bbmp_powerup_used()
 
 func wave_increase():
 	print("WAVE INCREASE --- No. %s - cars %s  potholes %s"%[wave_number,cars_this_wave,potholes_this_wave])
@@ -40,3 +43,6 @@ func use_pothole_powerup() -> void:
 		var cleared:bool = %PotholeSpawner.clear_random_pothole()
 		if cleared: pothole_powerup_uses -= 1
 		else: pass #cannot clear the pothole
+
+func use_bbmp_powerup() -> void:
+	bbmp_powerup_used.emit()
