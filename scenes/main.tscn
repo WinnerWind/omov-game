@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bp6qss41chrho"]
+[gd_scene load_steps=27 format=3 uid="uid://bp6qss41chrho"]
 
 [ext_resource type="Script" uid="uid://bikrhnp7h2fj6" path="res://scripts/pothole_spawner.gd" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://dwnwtqxdffhvo" path="res://scripts/game_manager.gd" id="1_tbgi4"]
@@ -43,6 +43,9 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 453, -37, 0, 0, 0, 0, 584, 296, 0, 0, 0, 0, 675, 402, 0, 0, 0, 0, 819, 732)
 }
 point_count = 4
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_85g3d"]
+size = Vector2(76, 56)
 
 [sub_resource type="Curve2D" id="Curve2D_2f3dj"]
 _data = {
@@ -104,8 +107,11 @@ _data = {
 }
 point_count = 3
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tipki"]
+size = Vector2(60, 100)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o6xl0"]
-size = Vector2(75, 100)
+size = Vector2(75, 80)
 
 [node name="Node2D" type="Node2D" node_paths=PackedStringArray("car_spawner", "pothole_spawner")]
 script = ExtResource("1_tbgi4")
@@ -154,6 +160,13 @@ curve = SubResource("Curve2D_2wyq8")
 [node name="Path2D6" type="Path2D" parent="Spanwers/North"]
 curve = SubResource("Curve2D_vxglm")
 
+[node name="SpawnChecker" type="Area2D" parent="Spanwers/North"]
+position = Vector2(475, -26)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spanwers/North/SpawnChecker"]
+shape = SubResource("RectangleShape2D_85g3d")
+
 [node name="East" type="Node2D" parent="Spanwers"]
 script = ExtResource("3_jyhfs")
 max_delay = 3.0
@@ -167,6 +180,13 @@ curve = SubResource("Curve2D_yq6so")
 
 [node name="Path2D3" type="Path2D" parent="Spanwers/East"]
 curve = SubResource("Curve2D_fv21b")
+
+[node name="SpawnChecker" type="Area2D" parent="Spanwers/East"]
+position = Vector2(1311, 607)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spanwers/East/SpawnChecker"]
+shape = SubResource("RectangleShape2D_85g3d")
 
 [node name="West" type="Node2D" parent="Spanwers"]
 script = ExtResource("3_jyhfs")
@@ -185,6 +205,13 @@ curve = SubResource("Curve2D_5q0nq")
 [node name="Path2D4" type="Path2D" parent="Spanwers/West"]
 curve = SubResource("Curve2D_dgi5k")
 
+[node name="SpawnChecker" type="Area2D" parent="Spanwers/West"]
+position = Vector2(-45, 92)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spanwers/West/SpawnChecker"]
+shape = SubResource("RectangleShape2D_85g3d")
+
 [node name="South" type="Node2D" parent="Spanwers"]
 script = ExtResource("3_jyhfs")
 max_delay = 3.0
@@ -198,6 +225,13 @@ curve = SubResource("Curve2D_kmb1v")
 
 [node name="Path2D3" type="Path2D" parent="Spanwers/South"]
 curve = SubResource("Curve2D_fuf3a")
+
+[node name="SpawnChecker" type="Area2D" parent="Spanwers/South"]
+position = Vector2(778, 750)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spanwers/South/SpawnChecker"]
+shape = SubResource("RectangleShape2D_85g3d")
 
 [node name="Wave Increase" type="Button" parent="."]
 offset_left = 55.0
@@ -219,6 +253,7 @@ stop_car_entirely = true
 [node name="Stop Area3" parent="Stop" instance=ExtResource("7_o6xl0")]
 position = Vector2(659, 573)
 stop_car_entirely = true
+shape = SubResource("RectangleShape2D_tipki")
 
 [node name="Stop Area4" parent="Stop" instance=ExtResource("7_o6xl0")]
 position = Vector2(511, 195)

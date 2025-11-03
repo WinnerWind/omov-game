@@ -38,6 +38,8 @@ func _ready() -> void:
 
 
 func queue_spawn() -> void:
+	if $SpawnChecker.has_overlapping_areas():
+		return
 	if not vehicles_spawned >= number_of_vehicles_to_spawn:
 		spawner_signal_emitted = false
 		var rand := randf()
