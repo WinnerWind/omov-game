@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://desqp67lb5m7r"
-path="res://.godot/imported/car-placeholder.svg-58d998a429bd75d55ec3da7122f0b42f.ctex"
+uid="uid://dua46o5pnhqlq"
+path="res://.godot/imported/car.png-5f2c7c564fcacbb0c79fcd94d0672b38.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/car-placeholder.svg"
-dest_files=["res://.godot/imported/car-placeholder.svg-58d998a429bd75d55ec3da7122f0b42f.ctex"]
+source_file="res://assets/art/vehicles/car.png"
+dest_files=["res://.godot/imported/car.png-5f2c7c564fcacbb0c79fcd94d0672b38.ctex"]
 
 [params]
 
@@ -37,7 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false
+detect_3d/compress_to=0

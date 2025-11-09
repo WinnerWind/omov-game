@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b8coxilqnsum0"]
 
 [ext_resource type="Script" uid="uid://pbyp0y4w8tjd" path="res://scripts/car2d.gd" id="1_g6wq1"]
-[ext_resource type="Texture2D" uid="uid://d2n81hwvrk40" path="res://assets/art/bus-placeholder.svg" id="2_2thgs"]
+[ext_resource type="Texture2D" uid="uid://b51hmu3oudb03" path="res://assets/art/vehicles/bus.png" id="2_2thgs"]
 
 [sub_resource type="Curve2D" id="Curve2D_0wfyh"]
 _data = {
@@ -10,7 +10,7 @@ _data = {
 point_count = 3
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2thgs"]
-size = Vector2(43.75, 31.15)
+size = Vector2(57, 28)
 
 [node name="Bus" type="Path2D" node_paths=PackedStringArray("sprite", "detector_collision_object", "path_follow", "raycast")]
 curve = SubResource("Curve2D_0wfyh")
@@ -19,7 +19,7 @@ initial_speed = 50.0
 slowdown_speed = 25.0
 raycast_distance = 40.0
 texture = ExtResource("2_2thgs")
-texture_scale = 0.35
+texture_scale = 1.0
 crash_car_in_pothole_chance = 0.1
 sprite = NodePath("PathFollow2D/Car/Sprite")
 detector_collision_object = NodePath("PathFollow2D/Collision Detector/CollisionShape2D")
@@ -40,7 +40,6 @@ shape = SubResource("RectangleShape2D_2thgs")
 [node name="Car" type="CharacterBody2D" parent="PathFollow2D"]
 
 [node name="Sprite" type="Sprite2D" parent="PathFollow2D/Car"]
-scale = Vector2(0.35, 0.35)
 texture = ExtResource("2_2thgs")
 
 [node name="Raycast" type="RayCast2D" parent="PathFollow2D/Car"]

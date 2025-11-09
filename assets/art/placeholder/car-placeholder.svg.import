@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bt0r1bo428iaf"
-path="res://.godot/imported/map-placeholder.svg-2bb2714438ececc3bb97f93505b4cceb.ctex"
+uid="uid://desqp67lb5m7r"
+path="res://.godot/imported/car-placeholder.svg-eaafd1ec0812bf75c80c3413f5da32cd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/map-placeholder.svg"
-dest_files=["res://.godot/imported/map-placeholder.svg-2bb2714438ececc3bb97f93505b4cceb.ctex"]
+source_file="res://assets/art/placeholder/car-placeholder.svg"
+dest_files=["res://.godot/imported/car-placeholder.svg-eaafd1ec0812bf75c80c3413f5da32cd.ctex"]
 
 [params]
 

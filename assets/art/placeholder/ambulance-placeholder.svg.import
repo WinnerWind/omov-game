@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dwj5yhitv0khl"
-path="res://.godot/imported/ambulance-placeholder.svg-0bf0b86dd189bc20694828fb1f4f808c.ctex"
+path="res://.godot/imported/ambulance-placeholder.svg-8bf990348dae2009882a0438409b7813.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/ambulance-placeholder.svg"
-dest_files=["res://.godot/imported/ambulance-placeholder.svg-0bf0b86dd189bc20694828fb1f4f808c.ctex"]
+source_file="res://assets/art/placeholder/ambulance-placeholder.svg"
+dest_files=["res://.godot/imported/ambulance-placeholder.svg-8bf990348dae2009882a0438409b7813.ctex"]
 
 [params]
 

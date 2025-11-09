@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjp33bnju6mgg"
-path="res://.godot/imported/bike-placeholder.svg-b4fbc852121fcc64ed1ea9703f2f3e76.ctex"
+uid="uid://bt0r1bo428iaf"
+path="res://.godot/imported/map-placeholder.svg-a3aa170ca401ea8dcd13c8539dc15997.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/bike-placeholder.svg"
-dest_files=["res://.godot/imported/bike-placeholder.svg-b4fbc852121fcc64ed1ea9703f2f3e76.ctex"]
+source_file="res://assets/art/placeholder/map-placeholder.svg"
+dest_files=["res://.godot/imported/map-placeholder.svg-a3aa170ca401ea8dcd13c8539dc15997.ctex"]
 
 [params]
 
