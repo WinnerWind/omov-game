@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bp6qss41chrho"]
+[gd_scene load_steps=28 format=3 uid="uid://bp6qss41chrho"]
 
 [ext_resource type="Script" uid="uid://bikrhnp7h2fj6" path="res://scripts/pothole_spawner.gd" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://dwnwtqxdffhvo" path="res://scripts/game_manager.gd" id="1_tbgi4"]
@@ -6,7 +6,8 @@
 [ext_resource type="Script" uid="uid://cqp60ymv8d6c2" path="res://scripts/car_spawner.gd" id="3_jyhfs"]
 [ext_resource type="Script" uid="uid://d0g0a2kvadj5b" path="res://scripts/car_spawner_manager.gd" id="5_85g3d"]
 [ext_resource type="PackedScene" uid="uid://0ej7nf4ws53l" path="res://scenes/prefabs/stop_area.tscn" id="7_o6xl0"]
-[ext_resource type="Texture2D" path="res://assets/art/map-placeholder.svg" id="8_tipki"]
+[ext_resource type="Script" uid="uid://bdyqlwk51uxgm" path="res://scripts/camera_limiter.gd" id="8_85g3d"]
+[ext_resource type="Texture2D" uid="uid://bt0r1bo428iaf" path="res://assets/art/placeholder/map-placeholder.svg" id="8_tipki"]
 
 [sub_resource type="Curve2D" id="Curve2D_tefeu"]
 _data = {
@@ -118,7 +119,7 @@ script = ExtResource("1_tbgi4")
 car_spawner = NodePath("Spanwers")
 pothole_spawner = NodePath("PotholeSpawner")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Map" type="Sprite2D" parent="."]
 position = Vector2(632, 352)
 scale = Vector2(0.69768524, 0.69768524)
 texture = ExtResource("8_tipki")
@@ -274,6 +275,12 @@ offset_top = 661.0
 offset_right = 157.0
 offset_bottom = 692.0
 text = "BBMP Powerup"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(639, 361)
+zoom = Vector2(1.7, 1.7)
+script = ExtResource("8_85g3d")
+rect = Vector2(752, 635)
 
 [connection signal="bbmp_powerup_used" from="." to="Spanwers" method="_bbmp_powerup_used"]
 [connection signal="all_cars_cleared" from="Spanwers" to="." method="wave_ended"]
