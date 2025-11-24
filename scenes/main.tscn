@@ -1,118 +1,106 @@
-[gd_scene load_steps=28 format=3 uid="uid://bp6qss41chrho"]
+[gd_scene load_steps=27 format=3 uid="uid://bp6qss41chrho"]
 
 [ext_resource type="Script" uid="uid://bikrhnp7h2fj6" path="res://scripts/pothole_spawner.gd" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://dwnwtqxdffhvo" path="res://scripts/game_manager.gd" id="1_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://bl8poaryl3h53" path="res://scenes/prefabs/pothole.tscn" id="2_0wfyh"]
+[ext_resource type="Texture2D" uid="uid://bu62cj0cvja48" path="res://assets/art/bg-dommasandra.png" id="2_tipki"]
 [ext_resource type="Script" uid="uid://cqp60ymv8d6c2" path="res://scripts/car_spawner.gd" id="3_jyhfs"]
 [ext_resource type="Script" uid="uid://d0g0a2kvadj5b" path="res://scripts/car_spawner_manager.gd" id="5_85g3d"]
 [ext_resource type="PackedScene" uid="uid://0ej7nf4ws53l" path="res://scenes/prefabs/stop_area.tscn" id="7_o6xl0"]
 [ext_resource type="Script" uid="uid://bdyqlwk51uxgm" path="res://scripts/camera_limiter.gd" id="8_85g3d"]
-[ext_resource type="Texture2D" uid="uid://bt0r1bo428iaf" path="res://assets/art/placeholder/map-placeholder.svg" id="8_tipki"]
 
-[sub_resource type="Curve2D" id="Curve2D_tefeu"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 453, -37, 0, 0, 0, 0, 498, 70, 0, 0, 0, 0, 463, 329, 0, 0, 0, 0, -90, 124)
-}
-point_count = 4
-
-[sub_resource type="Curve2D" id="Curve2D_o6xl0"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 453, -37, 0, 0, 0, 0, 498, 70, 0, 0, 0, 0, 478, 273, 0, 0, 0, 0, 1305, 547)
-}
-point_count = 4
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_85g3d"]
+size = Vector2(136, 82)
 
 [sub_resource type="Curve2D" id="Curve2D_tipki"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 453, -37, 0, 0, 0, 0, 498, 70, 0, 0, 0, 0, 474, 268, 0, 0, 0, 0, 638, 313, 0, 0, 0, 0, 823, 740)
+"points": PackedVector2Array(0, 0, 0, 0, 86, 22, -44.31719, -1.5827568, 44.31719, 1.5827568, 639, 325, 0, 0, 0, 0, 1212, 11)
 }
-point_count = 5
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_85g3d"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 81, 19, 0, 0, 0, 0, 1243, 667)
+}
+point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_choun"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 453, -37, 0, 0, 0, 0, 625, 360, 0, 0, 0, 0, -85, 125)
+"points": PackedVector2Array(0, 0, 0, 0, 75, 13, 1.5026295, -18.78287, -1.5026295, 18.78287, 676, 355, 0, 0, 0, 0, 86, 707)
 }
 point_count = 3
 
-[sub_resource type="Curve2D" id="Curve2D_2wyq8"]
+[sub_resource type="Curve2D" id="Curve2D_ya4ey"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 453, -37, 0, 0, 0, 0, 591, 300, 0, 0, 0, 0, 1342, 561)
-}
-point_count = 3
-
-[sub_resource type="Curve2D" id="Curve2D_vxglm"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 453, -37, 0, 0, 0, 0, 584, 296, 0, 0, 0, 0, 675, 402, 0, 0, 0, 0, 819, 732)
-}
-point_count = 4
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_85g3d"]
-size = Vector2(76, 56)
-
-[sub_resource type="Curve2D" id="Curve2D_2f3dj"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1307, 614, 0, 0, 0, 0, 671, 396, 0, 0, 0, 0, 821, 745)
-}
-point_count = 3
-
-[sub_resource type="Curve2D" id="Curve2D_yq6so"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1307, 614, 0, 0, 0, 0, -112, 111)
+"points": PackedVector2Array(0, 0, 0, 0, 1240, 44, 0, 0, 0, 0, 76, 713)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_fv21b"]
+[sub_resource type="Curve2D" id="Curve2D_eb6dy"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1307, 614, 0, 0, 0, 0, 674, 400, 0, 0, 0, 0, 477, -30)
+"points": PackedVector2Array(0, 0, 0, 0, 1246, 39, -1.3995218, -14.928233, 1.3995218, 14.928233, 693, 356, 0, 0, 0, 0, 1232, 662)
 }
 point_count = 3
 
-[sub_resource type="Curve2D" id="Curve2D_tel4y"]
+[sub_resource type="Curve2D" id="Curve2D_trceg"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -52, 79, 0, 0, 0, 0, 522, 279, 0, 0, 0, 0, 573, 189, 0, 0, 0, 0, 482, -28)
+"points": PackedVector2Array(0, 0, 0, 0, 1250, 39, 11.751969, 1.7410325, -11.751969, -1.7410325, 637, 379, 0, 0, 0, 0, 49, 50)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_a8y0u"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 48, 670, -5.785124, 20.661156, 5.785124, -20.661156, 460, 437, 9.917355, 19.83471, -9.917355, -19.83471, 454, 279, 0, 0, 0, 0, 49, 51)
 }
 point_count = 4
 
-[sub_resource type="Curve2D" id="Curve2D_qkpxi"]
+[sub_resource type="Curve2D" id="Curve2D_jkv2x"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -52, 79, 0, 0, 0, 0, 1317, 544)
+"points": PackedVector2Array(0, 0, 0, 0, 50, 662, 2.2578955, 19.192112, -2.2578955, -19.192112, 599, 362, 0, 0, 0, 0, 47, 52)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_jbj1t"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 51, 661, 0, 0, 0, 0, 1212, 18)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_5q0nq"]
+[sub_resource type="Curve2D" id="Curve2D_muem4"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -52, 79, 0, 0, 0, 0, 636, 315, 0, 0, 0, 0, 825, 758)
-}
-point_count = 3
-
-[sub_resource type="Curve2D" id="Curve2D_dgi5k"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -52, 79, 0, 0, 0, 0, 637, 313, 0, 0, 0, 0, 484, -19)
-}
-point_count = 3
-
-[sub_resource type="Curve2D" id="Curve2D_j8jky"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 747, 735, 0, 0, 0, 0, 615, 364, 0, 0, 0, 0, -37, 133)
-}
-point_count = 3
-
-[sub_resource type="Curve2D" id="Curve2D_kmb1v"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 750, 729, 0, 0, 0, 0, 613, 364, 0, 0, 0, 0, 647, 347, 0, 0, 0, 0, 484, -9)
+"points": PackedVector2Array(0, 0, 0, 0, 43, 672, -18.705307, -0.17985873, 18.705307, 0.17985873, 647, 337, 0, 0, 0, 0, 1232, 661, 0, 0, 0, 0, 43, 672)
 }
 point_count = 4
 
-[sub_resource type="Curve2D" id="Curve2D_fuf3a"]
+[sub_resource type="Curve2D" id="Curve2D_dp3eg"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 750, 729, 0, 0, 0, 0, 594, 305, 0, 0, 0, 0, 1317, 553)
+"points": PackedVector2Array(0, 0, 0, 0, 1213, 696, 0, 0, 0, 0, 40, 49)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_0ld40"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1214, 695, 24.118427, 1.026316, -24.118427, -1.026316, 646, 383, 0, 0, 0, 0, 85, 711)
 }
 point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_gqmmt"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1211, 695, -0.62092125, 8.071977, 0.62092125, -8.071977, 597, 361, 0, 0, 0, 0, 1197, 22)
+}
+point_count = 3
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_choun"]
+size = Vector2(40, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ya4ey"]
+size = Vector2(40, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tipki"]
-size = Vector2(60, 100)
+size = Vector2(40, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o6xl0"]
-size = Vector2(75, 80)
+size = Vector2(40, 40)
 
 [node name="Node2D" type="Node2D" node_paths=PackedStringArray("car_spawner", "pothole_spawner")]
 script = ExtResource("1_tbgi4")
@@ -120,9 +108,9 @@ car_spawner = NodePath("Spanwers")
 pothole_spawner = NodePath("PotholeSpawner")
 
 [node name="Map" type="Sprite2D" parent="."]
-position = Vector2(632, 352)
-scale = Vector2(0.69768524, 0.69768524)
-texture = ExtResource("8_tipki")
+position = Vector2(639, 361)
+scale = Vector2(0.6092594, 0.60925937)
+texture = ExtResource("2_tipki")
 
 [node name="PotholeSpawner" type="Polygon2D" parent="."]
 unique_name_in_owner = true
@@ -144,89 +132,71 @@ max_delay = 3.0
 min_delay = 1.0
 metadata/_custom_type_script = "uid://cqp60ymv8d6c2"
 
-[node name="Path2D" type="Path2D" parent="Spanwers/North"]
-curve = SubResource("Curve2D_tefeu")
-
-[node name="Path2D2" type="Path2D" parent="Spanwers/North"]
-curve = SubResource("Curve2D_o6xl0")
-
-[node name="Path2D3" type="Path2D" parent="Spanwers/North"]
-curve = SubResource("Curve2D_tipki")
-
-[node name="Path2D4" type="Path2D" parent="Spanwers/North"]
-curve = SubResource("Curve2D_choun")
-
-[node name="Path2D5" type="Path2D" parent="Spanwers/North"]
-curve = SubResource("Curve2D_2wyq8")
-
-[node name="Path2D6" type="Path2D" parent="Spanwers/North"]
-curve = SubResource("Curve2D_vxglm")
-
 [node name="SpawnChecker" type="Area2D" parent="Spanwers/North"]
-position = Vector2(475, -26)
+position = Vector2(96, 47)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spanwers/North/SpawnChecker"]
 shape = SubResource("RectangleShape2D_85g3d")
+
+[node name="East" type="Path2D" parent="Spanwers/North"]
+curve = SubResource("Curve2D_tipki")
+
+[node name="South" type="Path2D" parent="Spanwers/North"]
+curve = SubResource("Curve2D_85g3d")
+
+[node name="West" type="Path2D" parent="Spanwers/North"]
+curve = SubResource("Curve2D_choun")
 
 [node name="East" type="Node2D" parent="Spanwers"]
 script = ExtResource("3_jyhfs")
 max_delay = 3.0
 min_delay = 1.0
 
-[node name="Path2D" type="Path2D" parent="Spanwers/East"]
-curve = SubResource("Curve2D_2f3dj")
-
-[node name="Path2D2" type="Path2D" parent="Spanwers/East"]
-curve = SubResource("Curve2D_yq6so")
-
-[node name="Path2D3" type="Path2D" parent="Spanwers/East"]
-curve = SubResource("Curve2D_fv21b")
-
 [node name="SpawnChecker" type="Area2D" parent="Spanwers/East"]
-position = Vector2(1311, 607)
+position = Vector2(1197, 52)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spanwers/East/SpawnChecker"]
 shape = SubResource("RectangleShape2D_85g3d")
+
+[node name="West" type="Path2D" parent="Spanwers/East"]
+curve = SubResource("Curve2D_ya4ey")
+
+[node name="South" type="Path2D" parent="Spanwers/East"]
+curve = SubResource("Curve2D_eb6dy")
+
+[node name="North" type="Path2D" parent="Spanwers/East"]
+curve = SubResource("Curve2D_trceg")
 
 [node name="West" type="Node2D" parent="Spanwers"]
 script = ExtResource("3_jyhfs")
 max_delay = 3.0
 min_delay = 1.0
 
-[node name="Path2D" type="Path2D" parent="Spanwers/West"]
-curve = SubResource("Curve2D_tel4y")
-
-[node name="Path2D2" type="Path2D" parent="Spanwers/West"]
-curve = SubResource("Curve2D_qkpxi")
-
-[node name="Path2D3" type="Path2D" parent="Spanwers/West"]
-curve = SubResource("Curve2D_5q0nq")
-
-[node name="Path2D4" type="Path2D" parent="Spanwers/West"]
-curve = SubResource("Curve2D_dgi5k")
-
 [node name="SpawnChecker" type="Area2D" parent="Spanwers/West"]
-position = Vector2(-45, 92)
+position = Vector2(78, 682)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spanwers/West/SpawnChecker"]
 shape = SubResource("RectangleShape2D_85g3d")
 
+[node name="North-L" type="Path2D" parent="Spanwers/West"]
+curve = SubResource("Curve2D_a8y0u")
+
+[node name="North-R" type="Path2D" parent="Spanwers/West"]
+curve = SubResource("Curve2D_jkv2x")
+
+[node name="East" type="Path2D" parent="Spanwers/West"]
+curve = SubResource("Curve2D_jbj1t")
+
+[node name="South" type="Path2D" parent="Spanwers/West"]
+curve = SubResource("Curve2D_muem4")
+
 [node name="South" type="Node2D" parent="Spanwers"]
 script = ExtResource("3_jyhfs")
 max_delay = 3.0
 min_delay = 1.0
-
-[node name="Path2D" type="Path2D" parent="Spanwers/South"]
-curve = SubResource("Curve2D_j8jky")
-
-[node name="Path2D2" type="Path2D" parent="Spanwers/South"]
-curve = SubResource("Curve2D_kmb1v")
-
-[node name="Path2D3" type="Path2D" parent="Spanwers/South"]
-curve = SubResource("Curve2D_fuf3a")
 
 [node name="SpawnChecker" type="Area2D" parent="Spanwers/South"]
 position = Vector2(778, 750)
@@ -235,55 +205,68 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spanwers/South/SpawnChecker"]
 shape = SubResource("RectangleShape2D_85g3d")
 
-[node name="Wave Increase" type="Button" parent="."]
+[node name="North" type="Path2D" parent="Spanwers/South"]
+curve = SubResource("Curve2D_dp3eg")
+
+[node name="West" type="Path2D" parent="Spanwers/South"]
+curve = SubResource("Curve2D_0ld40")
+
+[node name="East" type="Path2D" parent="Spanwers/South"]
+curve = SubResource("Curve2D_gqmmt")
+
+[node name="Stop" type="Node2D" parent="."]
+
+[node name="North" parent="Stop" instance=ExtResource("7_o6xl0")]
+position = Vector2(578, 292)
+stop_car_entirely = true
+shape = SubResource("RectangleShape2D_choun")
+
+[node name="South" parent="Stop" instance=ExtResource("7_o6xl0")]
+position = Vector2(747, 439)
+stop_car_entirely = true
+shape = SubResource("RectangleShape2D_ya4ey")
+
+[node name="West" parent="Stop" instance=ExtResource("7_o6xl0")]
+position = Vector2(449, 437)
+stop_car_entirely = true
+shape = SubResource("RectangleShape2D_tipki")
+
+[node name="East" parent="Stop" instance=ExtResource("7_o6xl0")]
+position = Vector2(759, 332)
+stop_car_entirely = true
+shape = SubResource("RectangleShape2D_o6xl0")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(639, 361)
+zoom = Vector2(0.5, 0.5)
+script = ExtResource("8_85g3d")
+rect = Vector2(700, 600)
+
+[node name="UI Layer" type="CanvasLayer" parent="."]
+
+[node name="Wave Increase" type="Button" parent="UI Layer"]
 offset_left = 55.0
 offset_top = 54.0
 offset_right = 173.0
 offset_bottom = 85.0
 text = "Increase wave"
 
-[node name="Stop" type="Node2D" parent="."]
-
-[node name="Stop Area" parent="Stop" instance=ExtResource("7_o6xl0")]
-position = Vector2(390, 195)
-stop_car_entirely = true
-
-[node name="Stop Area2" parent="Stop" instance=ExtResource("7_o6xl0")]
-position = Vector2(809, 464)
-stop_car_entirely = true
-
-[node name="Stop Area3" parent="Stop" instance=ExtResource("7_o6xl0")]
-position = Vector2(659, 573)
-stop_car_entirely = true
-shape = SubResource("RectangleShape2D_tipki")
-
-[node name="Stop Area4" parent="Stop" instance=ExtResource("7_o6xl0")]
-position = Vector2(511, 195)
-stop_car_entirely = true
-shape = SubResource("RectangleShape2D_o6xl0")
-
-[node name="Powerup 1" type="Button" parent="."]
+[node name="Pothole CLear" type="Button" parent="UI Layer"]
 offset_left = 37.0
 offset_top = 630.0
 offset_right = 157.0
 offset_bottom = 661.0
 text = "Clear Potholes"
 
-[node name="BBMP Powerup" type="Button" parent="."]
+[node name="BBMP Powerup" type="Button" parent="UI Layer"]
 offset_left = 37.0
 offset_top = 661.0
 offset_right = 157.0
 offset_bottom = 692.0
 text = "BBMP Powerup"
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(639, 361)
-zoom = Vector2(1.7, 1.7)
-script = ExtResource("8_85g3d")
-rect = Vector2(752, 635)
-
 [connection signal="bbmp_powerup_used" from="." to="Spanwers" method="_bbmp_powerup_used"]
 [connection signal="all_cars_cleared" from="Spanwers" to="." method="wave_ended"]
-[connection signal="pressed" from="Wave Increase" to="." method="wave_increase"]
-[connection signal="pressed" from="Powerup 1" to="." method="_use_pothole_powerup"]
-[connection signal="pressed" from="BBMP Powerup" to="." method="_use_bbmp_powerup"]
+[connection signal="pressed" from="UI Layer/Wave Increase" to="." method="wave_increase"]
+[connection signal="pressed" from="UI Layer/Pothole CLear" to="." method="_use_pothole_powerup"]
+[connection signal="pressed" from="UI Layer/BBMP Powerup" to="." method="_use_bbmp_powerup"]

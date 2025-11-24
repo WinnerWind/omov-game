@@ -17,7 +17,7 @@ curve = SubResource("Curve2D_0wfyh")
 script = ExtResource("1_g6wq1")
 initial_speed = 50.0
 slowdown_speed = 25.0
-raycast_distance = 40.0
+raycast_distance = 50.0
 texture = ExtResource("2_2thgs")
 texture_scale = 1.0
 crash_car_in_pothole_chance = 0.1
@@ -43,7 +43,7 @@ shape = SubResource("RectangleShape2D_2thgs")
 texture = ExtResource("2_2thgs")
 
 [node name="Raycast" type="RayCast2D" parent="PathFollow2D/Car"]
-target_position = Vector2(40, 0)
+target_position = Vector2(50, 0)
 collide_with_areas = true
 
 [connection signal="area_entered" from="PathFollow2D/Collision Detector" to="." method="_on_collision_detector_area_entered"]
