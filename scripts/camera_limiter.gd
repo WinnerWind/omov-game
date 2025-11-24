@@ -7,6 +7,7 @@ var view_size:Vector2:
 		return Vector2(get_tree().root.size) / zoom
 func _ready() -> void:
 	get_tree().root.size_changed.connect(_on_size_changed)
+	_on_size_changed()
 
 func _on_size_changed():
 	var new_size := get_tree().root.size
