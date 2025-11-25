@@ -6,10 +6,14 @@ var speed:float:
 	set(new_speed):
 		speed = new_speed if new_speed >= 0 else initial_speed
 @export_custom(PROPERTY_HINT_NONE, "suffix:px/s") var initial_speed:float
-@export_custom(PROPERTY_HINT_NONE, "suffix:px/s") var slowdown_speed:float = 50
-@export_custom(PROPERTY_HINT_NONE, "suffix:px") var raycast_distance:float = 100:
+@export_custom(PROPERTY_HINT_NONE, "suffix:px/s") var slowdown_speed:float = 100
+@export_custom(PROPERTY_HINT_NONE, "suffix:px") var raycast_distance:float = 25:
 	set(new):
 		raycast_distance = new
+		if is_node_ready(): set_variables()
+@export_custom(PROPERTY_HINT_NONE, "suffix:px") var horizontal_raycast_distance:float = 25:
+	set(new):
+		horizontal_raycast_distance = new
 		if is_node_ready(): set_variables()
 @export_group("Visuals")
 @export var texture:Texture2D:
@@ -29,7 +33,9 @@ var collision_shape:Shape2D
 @export var sprite:Sprite2D
 @export var detector_collision_object:CollisionShape2D
 @export var path_follow:PathFollow2D
-@export var raycast:RayCast2D
+@export var collision_avoider_object:CollisionShape2D
+
+var is_colliding:bool
 
 signal crashed()
 signal path_complete()
@@ -38,7 +44,7 @@ func _ready() -> void:
 	speed = initial_speed
 func _process(delta: float) -> void:
 	if not Engine.is_editor_hint():
-		if not raycast.is_colliding():
+		if not is_colliding:
 			var distance = curve.get_baked_length()
 			var time_taken = distance/speed
 			path_follow.progress_ratio += delta / time_taken # Move object in time_taken seconds.
@@ -49,14 +55,20 @@ func set_variables():
 	if sprite and texture:
 		sprite.texture = texture
 		sprite.scale = Vector2i.ONE * texture_scale
-	if raycast:
-		raycast.target_position.x = raycast_distance
 	if detector_collision_object and collision_shape:
 		detector_collision_object.shape = collision_shape
 	if sprite and texture and detector_collision_object:
-		var shape = RectangleShape2D.new()
+		var shape := RectangleShape2D.new()
 		shape.size = texture.get_size() * sprite.scale
 		detector_collision_object.shape = shape
+	if collision_avoider_object:
+		var shape := RectangleShape2D.new()
+		shape.size = Vector2(raycast_distance,horizontal_raycast_distance)
+		print(shape.size)
+		collision_avoider_object.shape = shape
+		# Position the object so that the collisions are detected ahead
+		# the 1px gap ensures that it doesn't detect itself as a collision (bad!)
+		collision_avoider_object.get_parent().position = Vector2(sprite.texture.get_size().x/2 + raycast_distance/2 + 1,0)
 
 func crash() -> void:
 	crashed.emit()
@@ -78,3 +90,9 @@ func _on_collision_detector_area_entered(area: Area2D) -> void:
 		var path:CarPath = area.owner
 		path.crash()
 		crash()
+
+
+func _on_collision_avoider_area_entered(_area: Area2D) -> void:
+	is_colliding = true
+func _on_collision_avoider_area_exited(_area: Area2D) -> void:
+	is_colliding = false

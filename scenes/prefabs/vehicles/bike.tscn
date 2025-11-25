@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2id2nwbly58y"]
+[gd_scene load_steps=6 format=3 uid="uid://d2id2nwbly58y"]
 
 [ext_resource type="Script" uid="uid://pbyp0y4w8tjd" path="res://scripts/car2d.gd" id="1_odnmy"]
 [ext_resource type="Texture2D" uid="uid://7s51g3epal60" path="res://assets/art/vehicles/bike.png" id="2_hkgtj"]
@@ -12,18 +12,20 @@ point_count = 3
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hkgtj"]
 size = Vector2(35, 19)
 
-[node name="Car" type="Path2D" node_paths=PackedStringArray("sprite", "detector_collision_object", "path_follow", "raycast")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tdhmd"]
+size = Vector2(20, 25)
+
+[node name="Car" type="Path2D" node_paths=PackedStringArray("sprite", "detector_collision_object", "path_follow", "collision_avoider_object")]
 curve = SubResource("Curve2D_0wfyh")
 script = ExtResource("1_odnmy")
 initial_speed = 200.0
-slowdown_speed = 100.0
-raycast_distance = 50.0
+raycast_distance = 20.0
 texture = ExtResource("2_hkgtj")
 texture_scale = 1.0
 sprite = NodePath("PathFollow2D/Car/Sprite")
 detector_collision_object = NodePath("PathFollow2D/Collision Detector/CollisionShape2D")
 path_follow = NodePath("PathFollow2D")
-raycast = NodePath("PathFollow2D/Car/Raycast")
+collision_avoider_object = NodePath("PathFollow2D/Car/Collision Avoider/CollisionShape2D")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
 position = Vector2(149, 68)
@@ -41,8 +43,13 @@ shape = SubResource("RectangleShape2D_hkgtj")
 [node name="Sprite" type="Sprite2D" parent="PathFollow2D/Car"]
 texture = ExtResource("2_hkgtj")
 
-[node name="Raycast" type="RayCast2D" parent="PathFollow2D/Car"]
-target_position = Vector2(50, 0)
-collide_with_areas = true
+[node name="Collision Avoider" type="Area2D" parent="PathFollow2D/Car"]
+position = Vector2(28.5, 0)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/Car/Collision Avoider"]
+shape = SubResource("RectangleShape2D_tdhmd")
 
 [connection signal="area_entered" from="PathFollow2D/Collision Detector" to="." method="_on_collision_detector_area_entered"]
+[connection signal="area_entered" from="PathFollow2D/Car/Collision Avoider" to="." method="_on_collision_avoider_area_entered"]
+[connection signal="area_exited" from="PathFollow2D/Car/Collision Avoider" to="." method="_on_collision_avoider_area_exited"]
