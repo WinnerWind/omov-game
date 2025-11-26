@@ -46,3 +46,7 @@ func _use_pothole_powerup() -> void:
 
 func _use_bbmp_powerup() -> void:
 	bbmp_powerup_used.emit()
+
+func game_over() -> void:
+	print("Over!")
+	breakpoint

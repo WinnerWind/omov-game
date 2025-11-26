@@ -28,6 +28,7 @@ var collision_shape:Shape2D
 @export_tool_button("Reload All Visuals") var reload_visuals_script:Callable = set_variables
 @export_group("Car Modifiers")
 @export_range(0,1,0.1) var crash_car_in_pothole_chance:float = 0.0
+@export var max_patience:float = 10;
 @export var ignore_stop_signs:bool = false
 @export_group("Nodes")
 @export var sprite:Sprite2D
@@ -36,8 +37,10 @@ var collision_shape:Shape2D
 @export var collision_avoider_object:CollisionShape2D
 
 var is_colliding:bool
+var patience:float
 
 signal crashed()
+signal deadlock()
 signal path_complete()
 
 func _ready() -> void:
@@ -46,11 +49,16 @@ func _process(delta: float) -> void:
 	if not Engine.is_editor_hint():
 		if not is_colliding:
 			var distance = curve.get_baked_length()
+			patience = 0
 			var time_taken = distance/speed
 			path_follow.progress_ratio += delta / time_taken # Move object in time_taken seconds.
 			if path_follow.progress_ratio >= 0.99: #Reached the end of path
 				path_complete.emit()
 				free()
+		else:
+			patience += delta
+			if patience >= max_patience:
+				deadlock.emit()
 func set_variables():
 	if sprite and texture:
 		sprite.texture = texture

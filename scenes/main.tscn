@@ -102,7 +102,7 @@ size = Vector2(40, 40)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o6xl0"]
 size = Vector2(40, 40)
 
-[node name="Node2D" type="Node2D" node_paths=PackedStringArray("car_spawner", "pothole_spawner")]
+[node name="Main Scene" type="Node2D" node_paths=PackedStringArray("car_spawner", "pothole_spawner")]
 script = ExtResource("1_tbgi4")
 car_spawner = NodePath("Spanwers")
 pothole_spawner = NodePath("PotholeSpawner")
