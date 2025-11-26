@@ -23,7 +23,8 @@ func _ready() -> void:
 	body_exited.connect(_on_body_exited)
 	area_exited.connect(_on_body_exited)
 	if toggle_button:
-		toggle_button.size = shape.size
+		#toggle_button.size = shape.size
+		toggle_button.set_deferred(&"size", shape.size)
 	set_variables()
 
 func _on_body_entered(body:Node2D):
