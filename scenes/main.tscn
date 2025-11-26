@@ -199,7 +199,7 @@ max_delay = 3.0
 min_delay = 1.0
 
 [node name="SpawnChecker" type="Area2D" parent="Spanwers/South"]
-position = Vector2(778, 750)
+position = Vector2(1166, 668)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spanwers/South/SpawnChecker"]
@@ -222,7 +222,7 @@ stop_car_entirely = true
 shape = SubResource("RectangleShape2D_choun")
 
 [node name="South" parent="Stop" instance=ExtResource("7_o6xl0")]
-position = Vector2(747, 439)
+position = Vector2(739, 446)
 stop_car_entirely = true
 shape = SubResource("RectangleShape2D_ya4ey")
 
