@@ -100,7 +100,7 @@ size = Vector2(40, 40)
 size = Vector2(40, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o6xl0"]
-size = Vector2(40, 40)
+size = Vector2(30, 20)
 
 [node name="Main Scene" type="Node2D" node_paths=PackedStringArray("car_spawner", "pothole_spawner")]
 script = ExtResource("1_tbgi4")
@@ -222,7 +222,7 @@ stop_car_entirely = true
 shape = SubResource("RectangleShape2D_choun")
 
 [node name="South" parent="Stop" instance=ExtResource("7_o6xl0")]
-position = Vector2(739, 446)
+position = Vector2(739, 440)
 stop_car_entirely = true
 shape = SubResource("RectangleShape2D_ya4ey")
 
@@ -232,7 +232,7 @@ stop_car_entirely = true
 shape = SubResource("RectangleShape2D_tipki")
 
 [node name="East" parent="Stop" instance=ExtResource("7_o6xl0")]
-position = Vector2(759, 332)
+position = Vector2(743, 323)
 stop_car_entirely = true
 shape = SubResource("RectangleShape2D_o6xl0")
 
