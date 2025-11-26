@@ -22,9 +22,6 @@ func _ready() -> void:
 	area_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
 	area_exited.connect(_on_body_exited)
-	if toggle_button:
-		#toggle_button.size = shape.size
-		toggle_button.set_deferred(&"size", shape.size)
 	set_variables()
 
 func _on_body_entered(body:Node2D):
@@ -49,3 +46,7 @@ func toggle_stopped_state(state):
 	apply_effect = state
 func set_variables() -> void:
 	collision_shape.shape = shape
+	if toggle_button:
+		#toggle_button.size = shape.size
+		toggle_button.set_deferred(&"size", shape.size)
+		toggle_button.position = -shape.size/2

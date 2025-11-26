@@ -1,9 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://0ej7nf4ws53l"]
+[gd_scene load_steps=11 format=3 uid="uid://0ej7nf4ws53l"]
 
 [ext_resource type="Script" uid="uid://dm1cwo4hquhf6" path="res://scripts/slowdown_areas.gd" id="1_kn2g5"]
+[ext_resource type="Texture2D" uid="uid://bdjbvygqr5nns" path="res://assets/art/icons/stop-sign.png" id="2_4wlrb"]
+[ext_resource type="Texture2D" uid="uid://kf70mpy01f04" path="res://assets/art/icons/go-sign.png" id="3_7ufvg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_480gi"]
 size = Vector2(100, 100)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bbosw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cjk5n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0xs8k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f4gx8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8745n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n4ryh"]
 
 [node name="Stop Area" type="Area2D" node_paths=PackedStringArray("collision_shape", "toggle_button")]
 collision_layer = 2
@@ -28,5 +42,13 @@ offset_right = 50.0
 offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_bbosw")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_cjk5n")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0xs8k")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_f4gx8")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_8745n")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_n4ryh")
+theme_override_icons/checked = ExtResource("2_4wlrb")
+theme_override_icons/unchecked = ExtResource("3_7ufvg")
 
 [connection signal="toggled" from="CheckButton" to="." method="toggle_stopped_state"]
