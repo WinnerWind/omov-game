@@ -1,4 +1,5 @@
 extends Node2D
+class_name GameManager
 
 @export var wave_number:int = 0
 
@@ -47,6 +48,6 @@ func _use_pothole_powerup() -> void:
 func _use_bbmp_powerup() -> void:
 	bbmp_powerup_used.emit()
 
-func game_over() -> void:
-	print("Over!")
-	breakpoint
+enum GameOverReasons {DEADLOCK,CRASH,TOO_SLOW}
+func game_over(reason:GameOverReasons) -> void:
+	print(reason)

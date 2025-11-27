@@ -65,8 +65,8 @@ func queue_spawn() -> void:
 		var curve:Curve2D = curves.pick_random()
 		
 		vehicle.crashed.connect(check_all_cars_finished)
-		vehicle.crashed.connect(get_owner().game_over)
-		vehicle.deadlock.connect(get_owner().game_over)
+		vehicle.crashed.connect(get_owner().game_over.bind(GameManager.GameOverReasons.CRASH))
+		vehicle.deadlock.connect(get_owner().game_over.bind(GameManager.GameOverReasons.DEADLOCK))
 		vehicle.path_complete.connect(check_all_cars_finished)
 		
 		vehicle.curve = curve
