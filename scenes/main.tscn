@@ -1,13 +1,15 @@
-[gd_scene load_steps=27 format=3 uid="uid://bp6qss41chrho"]
+[gd_scene load_steps=29 format=3 uid="uid://bp6qss41chrho"]
 
 [ext_resource type="Script" uid="uid://bikrhnp7h2fj6" path="res://scripts/pothole_spawner.gd" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://dwnwtqxdffhvo" path="res://scripts/game_manager.gd" id="1_tbgi4"]
-[ext_resource type="PackedScene" uid="uid://bl8poaryl3h53" path="res://scenes/prefabs/pothole.tscn" id="2_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://bl8poaryl3h53" path="res://scenes/prefabs/vehicle-areas/pothole.tscn" id="2_0wfyh"]
 [ext_resource type="Texture2D" uid="uid://bu62cj0cvja48" path="res://assets/art/bg-dommasandra.png" id="2_tipki"]
 [ext_resource type="Script" uid="uid://cqp60ymv8d6c2" path="res://scripts/car_spawner.gd" id="3_jyhfs"]
 [ext_resource type="Script" uid="uid://d0g0a2kvadj5b" path="res://scripts/car_spawner_manager.gd" id="5_85g3d"]
-[ext_resource type="PackedScene" uid="uid://0ej7nf4ws53l" path="res://scenes/prefabs/stop_area.tscn" id="7_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://0ej7nf4ws53l" path="res://scenes/prefabs/vehicle-areas/stop_area.tscn" id="7_o6xl0"]
 [ext_resource type="Script" uid="uid://bdyqlwk51uxgm" path="res://scripts/camera_limiter.gd" id="8_85g3d"]
+[ext_resource type="PackedScene" uid="uid://2nekctgyyoj4" path="res://scenes/prefabs/ui/powerup-button.tscn" id="9_choun"]
+[ext_resource type="Texture2D" uid="uid://dsn0eas0lvlea" path="res://assets/art/icons/pothole-clear.png" id="10_ya4ey"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85g3d"]
 size = Vector2(136, 82)
@@ -244,29 +246,38 @@ rect = Vector2(700, 600)
 
 [node name="UI Layer" type="CanvasLayer" parent="."]
 
-[node name="Wave Increase" type="Button" parent="UI Layer"]
-offset_left = 55.0
-offset_top = 54.0
-offset_right = 173.0
-offset_bottom = 85.0
-text = "Increase wave"
+[node name="UI" type="VBoxContainer" parent="UI Layer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
-[node name="Pothole CLear" type="Button" parent="UI Layer"]
-offset_left = 37.0
-offset_top = 630.0
-offset_right = 157.0
-offset_bottom = 661.0
-text = "Clear Potholes"
+[node name="Top Spacer" type="Control" parent="UI Layer/UI"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 5.0
+mouse_filter = 2
 
-[node name="BBMP Powerup" type="Button" parent="UI Layer"]
-offset_left = 37.0
-offset_top = 661.0
-offset_right = 157.0
-offset_bottom = 692.0
-text = "BBMP Powerup"
+[node name="Powerups" type="HBoxContainer" parent="UI Layer/UI"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="BBMP Powerup" parent="UI Layer/UI/Powerups" instance=ExtResource("9_choun")]
+layout_mode = 2
+
+[node name="Pothole Clear Powerup" parent="UI Layer/UI/Powerups" instance=ExtResource("9_choun")]
+layout_mode = 2
+icon = ExtResource("10_ya4ey")
+
+[node name="Button" type="Button" parent="UI Layer/UI"]
+layout_mode = 2
+text = "INCREASE WAVE"
 
 [connection signal="bbmp_powerup_used" from="." to="Spanwers" method="_bbmp_powerup_used"]
 [connection signal="all_cars_cleared" from="Spanwers" to="." method="wave_ended"]
-[connection signal="pressed" from="UI Layer/Wave Increase" to="." method="wave_increase"]
-[connection signal="pressed" from="UI Layer/Pothole CLear" to="." method="_use_pothole_powerup"]
-[connection signal="pressed" from="UI Layer/BBMP Powerup" to="." method="_use_bbmp_powerup"]
+[connection signal="pressed" from="UI Layer/UI/Powerups/BBMP Powerup" to="." method="_use_bbmp_powerup"]
+[connection signal="pressed" from="UI Layer/UI/Powerups/Pothole Clear Powerup" to="." method="_use_pothole_powerup"]
+[connection signal="pressed" from="UI Layer/UI/Button" to="." method="wave_increase"]

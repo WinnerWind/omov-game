@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://2nekctgyyoj4"]
+
+[ext_resource type="Texture2D" uid="uid://db007pxih81qp" path="res://assets/art/icons/bbmp-ticket.png" id="1_o8kuc"]
+
+[node name="PowerupButton" type="Button"]
+custom_minimum_size = Vector2(128, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("1_o8kuc")
+flat = true
+icon_alignment = 1
+expand_icon = true
