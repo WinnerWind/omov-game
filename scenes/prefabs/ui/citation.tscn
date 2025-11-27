@@ -1,0 +1,178 @@
+[gd_scene load_steps=8 format=3 uid="uid://b2rvg70uwb417"]
+
+[ext_resource type="Theme" uid="uid://bgbm0bam5qsyn" path="res://assets/theme.tres" id="1_3aot3"]
+[ext_resource type="Texture2D" uid="uid://bv1yw6dkywxop" path="res://assets/art/ui/citation-paper.png" id="1_fu701"]
+[ext_resource type="Texture2D" uid="uid://cj6yekdxhfhhs" path="res://assets/art/ui/clip.png" id="2_3aot3"]
+[ext_resource type="Script" uid="uid://1wmfgnp43cy7" path="res://scripts/ui/game_over_citation.gd" id="3_lmakv"]
+
+[sub_resource type="Animation" id="Animation_lmakv"]
+resource_name = "intro"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.43333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.17453292519943295, -0.03490658503988659]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.46666664),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-500, -500), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_g5m3l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g5m3l"]
+_data = {
+&"RESET": SubResource("Animation_g5m3l"),
+&"intro": SubResource("Animation_lmakv")
+}
+
+[node name="Citation" type="TextureRect"]
+custom_minimum_size = Vector2(540, 540)
+offset_right = 540.0
+offset_bottom = 540.0
+theme = ExtResource("1_3aot3")
+texture = ExtResource("1_fu701")
+expand_mode = 3
+stretch_mode = 5
+script = ExtResource("3_lmakv")
+content_template = "DAY: {day}
+HIGH SCORE: {high_score}
+
+{content}"
+
+[node name="MarginRatioContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Clip Area" type="HBoxContainer" parent="MarginRatioContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.17
+
+[node name="L" type="Control" parent="MarginRatioContainer/Clip Area"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.0
+
+[node name="ClipShrinker" type="MarginContainer" parent="MarginRatioContainer/Clip Area"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_bottom = -30
+
+[node name="Clip" type="TextureRect" parent="MarginRatioContainer/Clip Area/ClipShrinker"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_3aot3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="R" type="Control" parent="MarginRatioContainer/Clip Area"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Content" type="HBoxContainer" parent="MarginRatioContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="L" type="Control" parent="MarginRatioContainer/Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="Content" type="VBoxContainer" parent="MarginRatioContainer/Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="MarginRatioContainer/Content/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"CitationTitle"
+text = "CITATION"
+
+[node name="MainText" type="RichTextLabel" parent="MarginRatioContainer/Content/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"CitationMainText"
+text = "DAY: 9
+HIGH SCORE: 12
+
+Dommasandra had a complete deadlock!"
+
+[node name="Buttons" type="HBoxContainer" parent="MarginRatioContainer/Content/Content"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Restart" type="Button" parent="MarginRatioContainer/Content/Content/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"CitationButtons"
+text = "Restart"
+flat = true
+
+[node name="Main Menu" type="Button" parent="MarginRatioContainer/Content/Content/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"CitationButtons"
+text = "Main Menu"
+flat = true
+
+[node name="R" type="Control" parent="MarginRatioContainer/Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="Control" type="Control" parent="MarginRatioContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.12
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_g5m3l")
+}
