@@ -26,6 +26,9 @@ var cars_this_wave:int:
 
 signal bbmp_powerup_used()
 
+signal number_of_potholes_changed(num:int)
+signal number_of_bbmp_changed(num:int)
+
 func wave_increase():
 	print("WAVE INCREASE --- No. %s - cars %s  potholes %s"%[wave_number,cars_this_wave,potholes_this_wave])
 	wave_number += 1
@@ -34,6 +37,9 @@ func wave_increase():
 	
 	pothole_spawner.number_of_potholes_to_spawn = potholes_this_wave
 	pothole_spawner.queue_spawn_pothole()
+	
+	number_of_bbmp_changed.emit(bbmp_powerup_uses)
+	number_of_potholes_changed.emit(potholes_this_wave)
 
 func wave_ended():
 	print("Wave has ended!")
