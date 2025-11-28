@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://cqp60ymv8d6c2" path="res://scripts/car_spawner.gd" id="3_jyhfs"]
 [ext_resource type="Script" uid="uid://d0g0a2kvadj5b" path="res://scripts/car_spawner_manager.gd" id="5_85g3d"]
 [ext_resource type="PackedScene" uid="uid://0ej7nf4ws53l" path="res://scenes/prefabs/vehicle-areas/stop_area.tscn" id="7_o6xl0"]
-[ext_resource type="Script" uid="uid://bdyqlwk51uxgm" path="res://scripts/camera_limiter.gd" id="8_85g3d"]
+[ext_resource type="Script" uid="uid://payarb4yxwap" path="res://scripts/game_over_camera2d.gd" id="8_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://2nekctgyyoj4" path="res://scenes/prefabs/ui/powerup-button.tscn" id="9_choun"]
 [ext_resource type="Theme" uid="uid://bgbm0bam5qsyn" path="res://assets/theme.tres" id="9_ya4ey"]
 [ext_resource type="Texture2D" uid="uid://dsn0eas0lvlea" path="res://assets/art/icons/pothole-clear.png" id="10_ya4ey"]
@@ -119,7 +119,7 @@ texture = ExtResource("2_tipki")
 [node name="PotholeSpawner" type="Polygon2D" parent="."]
 unique_name_in_owner = true
 color = Color(1, 1, 1, 0)
-polygon = PackedVector2Array(478, 0, 493, 2, 600, 293, 1228, 521, 1257, 584, 655, 396, 784, 694, 747, 698, 630, 380, -5, 150, -5, 116, 462, 248, 492, 104, 538, 218, 506, 273, 583, 303)
+polygon = PackedVector2Array(275, 173, 311, 135, 638, 322, 965, 146, 1007, 188, 692, 357, 1013, 538, 994, 587, 639, 384, 389, 531, 350, 506, 588, 364)
 script = ExtResource("1_o5qli")
 max_delay = 60.0
 min_delay = 30.0
@@ -241,10 +241,11 @@ position = Vector2(743, 323)
 stop_car_entirely = true
 shape = SubResource("RectangleShape2D_o6xl0")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera" type="Camera2D" parent="."]
 position = Vector2(639, 361)
-zoom = Vector2(0.5, 0.5)
-script = ExtResource("8_85g3d")
+zoom = Vector2(2, 2)
+script = ExtResource("8_eb6dy")
+zoom_scale = 1.0
 rect = Vector2(700, 600)
 
 [node name="UI Layer" type="CanvasLayer" parent="."]

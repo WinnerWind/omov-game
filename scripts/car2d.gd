@@ -40,6 +40,7 @@ var is_colliding:bool
 var patience:float
 
 signal crashed()
+signal crash_pos(pos:Vector2)
 signal deadlock()
 signal path_complete()
 
@@ -58,6 +59,7 @@ func _process(delta: float) -> void:
 		else:
 			patience += delta
 			if patience >= max_patience:
+				crash_pos.emit(path_follow.position)
 				deadlock.emit()
 func set_variables():
 	if sprite and texture:
@@ -80,7 +82,7 @@ func set_variables():
 
 func crash() -> void:
 	crashed.emit()
-	self.queue_free()
+	crash_pos.emit(path_follow.position)
 
 func entered_slowdown() -> void:
 	var is_crash := randf_range(0,1) < crash_car_in_pothole_chance
