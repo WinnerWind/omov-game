@@ -1,18 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://bl8poaryl3h53"]
+[gd_scene load_steps=4 format=3 uid="uid://bl8poaryl3h53"]
 
 [ext_resource type="Script" uid="uid://dm1cwo4hquhf6" path="res://scripts/slowdown_areas.gd" id="1_kn2g5"]
+[ext_resource type="Texture2D" uid="uid://0gska5q275f5" path="res://assets/art/pothole.png" id="2_tq53i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_480gi"]
-size = Vector2(100, 100)
+size = Vector2(25, 25)
 
-[node name="Stop Area" type="Area2D" node_paths=PackedStringArray("collision_shape")]
+[node name="Stop Area" type="Area2D" node_paths=PackedStringArray("collision_shape", "toggle_button")]
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_kn2g5")
 apply_effect = true
-slowdown_speed = 100.0
 shape = SubResource("RectangleShape2D_480gi")
 collision_shape = NodePath("CollisionShape2D")
+toggle_button = NodePath("CheckButton")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_480gi")
+
+[node name="CheckButton" type="CheckButton" parent="."]
+offset_left = -12.5
+offset_top = -12.5
+offset_right = 19.5
+offset_bottom = 15.5
+theme_override_constants/icon_max_width = 20
+theme_override_icons/unchecked_disabled = ExtResource("2_tq53i")
+disabled = true
+flat = true
