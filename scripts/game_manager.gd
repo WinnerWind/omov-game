@@ -52,7 +52,11 @@ func _use_pothole_powerup() -> void:
 		else: pass #cannot clear the pothole
 
 func _use_bbmp_powerup() -> void:
-	bbmp_powerup_used.emit()
+	var bbmp_active:bool = %Spawners.only_spawn_buses
+	if bbmp_powerup_uses > 0 and not bbmp_active:
+		bbmp_powerup_used.emit()
+		bbmp_powerup_uses -= 1
+		number_of_bbmp_changed.emit(bbmp_powerup_uses)
 
 enum GameOverReasons {DEADLOCK,CRASH,TOO_SLOW}
 func game_over(reason:GameOverReasons) -> void:

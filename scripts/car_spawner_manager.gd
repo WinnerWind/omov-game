@@ -12,6 +12,13 @@ var spawners_complete:int #number of spawners in which all cars have spawned
 var spawners_cleared:int #number of spawners in which all cars have cleared.
 
 @export var bbmp_powerup_time:float
+var only_spawn_buses:bool:
+	get:
+		var val:bool
+		for spawner in spawners:
+			if spawner.only_spawn_buses: val = true
+			else: val = false
+		return val
 
 func _ready() -> void:
 	for spawner in spawners:
