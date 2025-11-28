@@ -108,7 +108,7 @@ size = Vector2(30, 20)
 
 [node name="Main Scene" type="Node2D" node_paths=PackedStringArray("car_spawner", "pothole_spawner")]
 script = ExtResource("1_tbgi4")
-car_spawner = NodePath("Spanwers")
+car_spawner = NodePath("Spawners")
 pothole_spawner = NodePath("PotholeSpawner")
 
 [node name="Map" type="Sprite2D" parent="."]
@@ -125,97 +125,98 @@ max_delay = 60.0
 min_delay = 30.0
 pothole_scene = ExtResource("2_0wfyh")
 
-[node name="Spanwers" type="Node2D" parent="." node_paths=PackedStringArray("spawners")]
+[node name="Spawners" type="Node2D" parent="." node_paths=PackedStringArray("spawners")]
+unique_name_in_owner = true
 script = ExtResource("5_85g3d")
 spawners = [NodePath("North"), NodePath("East"), NodePath("West"), NodePath("South")]
 bbmp_powerup_time = 5.0
 
-[node name="North" type="Node2D" parent="Spanwers"]
+[node name="North" type="Node2D" parent="Spawners"]
 script = ExtResource("3_jyhfs")
 max_delay = 3.0
 min_delay = 1.0
 metadata/_custom_type_script = "uid://cqp60ymv8d6c2"
 
-[node name="SpawnChecker" type="Area2D" parent="Spanwers/North"]
+[node name="SpawnChecker" type="Area2D" parent="Spawners/North"]
 position = Vector2(96, 47)
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Spanwers/North/SpawnChecker"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spawners/North/SpawnChecker"]
 shape = SubResource("RectangleShape2D_85g3d")
 
-[node name="East" type="Path2D" parent="Spanwers/North"]
+[node name="East" type="Path2D" parent="Spawners/North"]
 curve = SubResource("Curve2D_tipki")
 
-[node name="South" type="Path2D" parent="Spanwers/North"]
+[node name="South" type="Path2D" parent="Spawners/North"]
 curve = SubResource("Curve2D_85g3d")
 
-[node name="West" type="Path2D" parent="Spanwers/North"]
+[node name="West" type="Path2D" parent="Spawners/North"]
 curve = SubResource("Curve2D_choun")
 
-[node name="East" type="Node2D" parent="Spanwers"]
+[node name="East" type="Node2D" parent="Spawners"]
 script = ExtResource("3_jyhfs")
 max_delay = 3.0
 min_delay = 1.0
 
-[node name="SpawnChecker" type="Area2D" parent="Spanwers/East"]
+[node name="SpawnChecker" type="Area2D" parent="Spawners/East"]
 position = Vector2(1197, 52)
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Spanwers/East/SpawnChecker"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spawners/East/SpawnChecker"]
 shape = SubResource("RectangleShape2D_85g3d")
 
-[node name="West" type="Path2D" parent="Spanwers/East"]
+[node name="West" type="Path2D" parent="Spawners/East"]
 curve = SubResource("Curve2D_ya4ey")
 
-[node name="South" type="Path2D" parent="Spanwers/East"]
+[node name="South" type="Path2D" parent="Spawners/East"]
 curve = SubResource("Curve2D_eb6dy")
 
-[node name="North" type="Path2D" parent="Spanwers/East"]
+[node name="North" type="Path2D" parent="Spawners/East"]
 curve = SubResource("Curve2D_trceg")
 
-[node name="West" type="Node2D" parent="Spanwers"]
+[node name="West" type="Node2D" parent="Spawners"]
 script = ExtResource("3_jyhfs")
 max_delay = 3.0
 min_delay = 1.0
 
-[node name="SpawnChecker" type="Area2D" parent="Spanwers/West"]
+[node name="SpawnChecker" type="Area2D" parent="Spawners/West"]
 position = Vector2(78, 682)
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Spanwers/West/SpawnChecker"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spawners/West/SpawnChecker"]
 shape = SubResource("RectangleShape2D_85g3d")
 
-[node name="North-L" type="Path2D" parent="Spanwers/West"]
+[node name="North-L" type="Path2D" parent="Spawners/West"]
 curve = SubResource("Curve2D_a8y0u")
 
-[node name="North-R" type="Path2D" parent="Spanwers/West"]
+[node name="North-R" type="Path2D" parent="Spawners/West"]
 curve = SubResource("Curve2D_jkv2x")
 
-[node name="East" type="Path2D" parent="Spanwers/West"]
+[node name="East" type="Path2D" parent="Spawners/West"]
 curve = SubResource("Curve2D_jbj1t")
 
-[node name="South" type="Path2D" parent="Spanwers/West"]
+[node name="South" type="Path2D" parent="Spawners/West"]
 curve = SubResource("Curve2D_muem4")
 
-[node name="South" type="Node2D" parent="Spanwers"]
+[node name="South" type="Node2D" parent="Spawners"]
 script = ExtResource("3_jyhfs")
 max_delay = 3.0
 min_delay = 1.0
 
-[node name="SpawnChecker" type="Area2D" parent="Spanwers/South"]
+[node name="SpawnChecker" type="Area2D" parent="Spawners/South"]
 position = Vector2(1166, 668)
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Spanwers/South/SpawnChecker"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spawners/South/SpawnChecker"]
 shape = SubResource("RectangleShape2D_85g3d")
 
-[node name="North" type="Path2D" parent="Spanwers/South"]
+[node name="North" type="Path2D" parent="Spawners/South"]
 curve = SubResource("Curve2D_dp3eg")
 
-[node name="West" type="Path2D" parent="Spanwers/South"]
+[node name="West" type="Path2D" parent="Spawners/South"]
 curve = SubResource("Curve2D_0ld40")
 
-[node name="East" type="Path2D" parent="Spanwers/South"]
+[node name="East" type="Path2D" parent="Spawners/South"]
 curve = SubResource("Curve2D_gqmmt")
 
 [node name="Stop" type="Node2D" parent="."]
@@ -283,10 +284,10 @@ icon = ExtResource("10_ya4ey")
 layout_mode = 2
 text = "INCREASE WAVE"
 
-[connection signal="bbmp_powerup_used" from="." to="Spanwers" method="_bbmp_powerup_used"]
+[connection signal="bbmp_powerup_used" from="." to="Spawners" method="_bbmp_powerup_used"]
 [connection signal="number_of_bbmp_changed" from="." to="UI Layer/UI/Powerups/BBMP Powerup" method="_value_changed"]
-[connection signal="number_of_potholes_changed" from="." to="UI Layer/UI/Powerups/Pothole Clear Powerup" method="_value_changed"]
-[connection signal="all_cars_cleared" from="Spanwers" to="." method="wave_ended"]
+[connection signal="number_of_potholes_powerup_changed" from="." to="UI Layer/UI/Powerups/Pothole Clear Powerup" method="_value_changed"]
+[connection signal="all_cars_cleared" from="Spawners" to="." method="wave_ended"]
 [connection signal="pressed" from="UI Layer/UI/Powerups/BBMP Powerup" to="." method="_use_bbmp_powerup"]
 [connection signal="pressed" from="UI Layer/UI/Powerups/Pothole Clear Powerup" to="." method="_use_pothole_powerup"]
 [connection signal="pressed" from="UI Layer/UI/Button" to="." method="wave_increase"]

@@ -26,7 +26,7 @@ var cars_this_wave:int:
 
 signal bbmp_powerup_used()
 
-signal number_of_potholes_changed(num:int)
+signal number_of_potholes_powerup_changed(num:int)
 signal number_of_bbmp_changed(num:int)
 
 func wave_increase():
@@ -39,7 +39,8 @@ func wave_increase():
 	pothole_spawner.queue_spawn_pothole()
 	
 	number_of_bbmp_changed.emit(bbmp_powerup_uses)
-	number_of_potholes_changed.emit(potholes_this_wave)
+	number_of_potholes_powerup_changed.emit(pothole_powerup_uses)
+	print(pothole_powerup_uses)
 
 func wave_ended():
 	print("Wave has ended!")
@@ -50,6 +51,7 @@ func _use_pothole_powerup() -> void:
 		var cleared:bool = %PotholeSpawner.clear_random_pothole()
 		if cleared: pothole_powerup_uses -= 1
 		else: pass #cannot clear the pothole
+		number_of_potholes_powerup_changed.emit(pothole_powerup_uses)
 
 func _use_bbmp_powerup() -> void:
 	var bbmp_active:bool = %Spawners.only_spawn_buses
@@ -72,7 +74,7 @@ func game_over(reason:GameOverReasons) -> void:
 	var button_dictionary:Dictionary[String,Callable] = {"Restart": get_tree().reload_current_scene, "Main Menu": func(): print("Hello World")}
 	citation_screen.set_content(title, content , wave_number, 0)
 	citation_screen.set_buttons(button_dictionary)
-	$Spanwers.process_mode = Node.PROCESS_MODE_DISABLED
+	%Spawners.process_mode = Node.PROCESS_MODE_DISABLED
 
 #func _ready() -> void:
 	#game_over(0)
