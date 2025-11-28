@@ -248,7 +248,8 @@ rect = Vector2(700, 600)
 
 [node name="UI Layer" type="CanvasLayer" parent="."]
 
-[node name="Citation" parent="UI Layer" instance=ExtResource("12_eb6dy")]
+[node name="Game Over Screen" parent="UI Layer" instance=ExtResource("12_eb6dy")]
+unique_name_in_owner = true
 visible = false
 
 [node name="UI" type="VBoxContainer" parent="UI Layer"]

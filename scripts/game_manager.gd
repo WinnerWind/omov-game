@@ -56,4 +56,19 @@ func _use_bbmp_powerup() -> void:
 
 enum GameOverReasons {DEADLOCK,CRASH,TOO_SLOW}
 func game_over(reason:GameOverReasons) -> void:
-	print(reason)
+	var citation_screen:GameOverCitation = %"Game Over Screen"
+	citation_screen.intro()
+	citation_screen.show()
+	var title:String = "CITATION"
+	var content:String
+	match reason:
+		GameOverReasons.DEADLOCK: content = "Dommasandra had a complete deadlock!"
+		GameOverReasons.CRASH: content = "Two vehicles collided with each other!"
+		GameOverReasons.TOO_SLOW: content = "Cars were not moving fast enough!"
+	var button_dictionary:Dictionary[String,Callable] = {"Restart": get_tree().reload_current_scene, "Main Menu": func(): print("Hello World")}
+	citation_screen.set_content(title, content , wave_number, 0)
+	citation_screen.set_buttons(button_dictionary)
+	$Spanwers.process_mode = Node.PROCESS_MODE_DISABLED
+
+#func _ready() -> void:
+	#game_over(0)
