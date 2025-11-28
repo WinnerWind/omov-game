@@ -274,9 +274,11 @@ size_flags_vertical = 3
 alignment = 1
 
 [node name="BBMP Powerup" parent="UI Layer/UI/Powerups" instance=ExtResource("9_choun")]
+visible = false
 layout_mode = 2
 
 [node name="Pothole Clear Powerup" parent="UI Layer/UI/Powerups" instance=ExtResource("9_choun")]
+visible = false
 layout_mode = 2
 icon = ExtResource("10_ya4ey")
 
