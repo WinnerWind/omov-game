@@ -36,7 +36,8 @@ var collision_shape:Shape2D
 @export var path_follow:PathFollow2D
 @export var collision_avoider_object:CollisionShape2D
 
-var is_colliding:bool
+var is_colliding:bool = false
+var is_in_stop_sign:bool = false
 var patience:float
 
 signal crashed()
@@ -49,6 +50,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if not Engine.is_editor_hint():
 		if not is_colliding:
+			if not is_in_stop_sign: speed = lerp(speed, initial_speed, delta)
 			var distance = curve.get_baked_length()
 			patience = 0
 			var time_taken = distance/speed
@@ -96,15 +98,18 @@ func entered_stop() -> void:
 		pass
 	else: #pay heed to stop signs
 		speed = 0
+		is_in_stop_sign = true
 
 func _on_collision_detector_area_entered(area: Area2D) -> void:
 	if not area is SlowdownArea: #Ensure we collided with a car
-		var path:CarPath = area.owner
-		path.crash()
-		crash()
+		if not path_follow.progress_ratio <= 0.4: #Stop so called spawn crashes
+			var path:CarPath = area.owner
+			path.crash()
+			crash()
 
 
 func _on_collision_avoider_area_entered(_area: Area2D) -> void:
 	is_colliding = true
+	speed = 0
 func _on_collision_avoider_area_exited(_area: Area2D) -> void:
 	is_colliding = false
