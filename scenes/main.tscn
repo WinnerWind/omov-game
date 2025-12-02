@@ -266,7 +266,7 @@ theme = ExtResource("9_ya4ey")
 [node name="Top Spacer" type="Control" parent="UI Layer/UI"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 5.0
+size_flags_stretch_ratio = 4.0
 mouse_filter = 2
 
 [node name="Powerups" type="HBoxContainer" parent="UI Layer/UI"]
