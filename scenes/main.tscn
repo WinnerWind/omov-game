@@ -133,8 +133,8 @@ bbmp_powerup_time = 5.0
 
 [node name="North" type="Node2D" parent="Spawners"]
 script = ExtResource("3_jyhfs")
-max_delay = 3.0
-min_delay = 1.0
+max_delay = 4.0
+min_delay = 3.0
 metadata/_custom_type_script = "uid://cqp60ymv8d6c2"
 
 [node name="SpawnChecker" type="Area2D" parent="Spawners/North"]
@@ -155,8 +155,8 @@ curve = SubResource("Curve2D_choun")
 
 [node name="East" type="Node2D" parent="Spawners"]
 script = ExtResource("3_jyhfs")
-max_delay = 3.0
-min_delay = 1.0
+max_delay = 4.0
+min_delay = 3.0
 
 [node name="SpawnChecker" type="Area2D" parent="Spawners/East"]
 position = Vector2(1197, 52)
@@ -176,8 +176,8 @@ curve = SubResource("Curve2D_trceg")
 
 [node name="West" type="Node2D" parent="Spawners"]
 script = ExtResource("3_jyhfs")
-max_delay = 3.0
-min_delay = 1.0
+max_delay = 4.0
+min_delay = 3.0
 
 [node name="SpawnChecker" type="Area2D" parent="Spawners/West"]
 position = Vector2(78, 682)
@@ -200,8 +200,8 @@ curve = SubResource("Curve2D_muem4")
 
 [node name="South" type="Node2D" parent="Spawners"]
 script = ExtResource("3_jyhfs")
-max_delay = 3.0
-min_delay = 1.0
+max_delay = 4.0
+min_delay = 3.0
 
 [node name="SpawnChecker" type="Area2D" parent="Spawners/South"]
 position = Vector2(1166, 668)
