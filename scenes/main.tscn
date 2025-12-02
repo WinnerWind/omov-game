@@ -283,14 +283,9 @@ visible = false
 layout_mode = 2
 icon = ExtResource("10_ya4ey")
 
-[node name="Button" type="Button" parent="UI Layer/UI"]
-layout_mode = 2
-text = "INCREASE WAVE"
-
 [connection signal="bbmp_powerup_used" from="." to="Spawners" method="_bbmp_powerup_used"]
 [connection signal="number_of_bbmp_changed" from="." to="UI Layer/UI/Powerups/BBMP Powerup" method="_value_changed"]
 [connection signal="number_of_potholes_powerup_changed" from="." to="UI Layer/UI/Powerups/Pothole Clear Powerup" method="_value_changed"]
 [connection signal="all_cars_cleared" from="Spawners" to="." method="wave_ended"]
 [connection signal="pressed" from="UI Layer/UI/Powerups/BBMP Powerup" to="." method="_use_bbmp_powerup"]
 [connection signal="pressed" from="UI Layer/UI/Powerups/Pothole Clear Powerup" to="." method="_use_pothole_powerup"]
-[connection signal="pressed" from="UI Layer/UI/Button" to="." method="wave_increase"]
