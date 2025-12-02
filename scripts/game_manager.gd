@@ -74,9 +74,10 @@ func game_over(reason:GameOverReasons) -> void:
 	var button_dictionary:Dictionary[String,Callable] = {"Restart": get_tree().reload_current_scene, "Main Menu": func(): print("Hello World")}
 	citation_screen.set_content(title, content , wave_number, 0)
 	citation_screen.set_buttons(button_dictionary)
-	%Spawners.process_mode = Node.PROCESS_MODE_DISABLED
+	%Spawners.set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)
+	#%Spawners.process_mode = Node.PROCESS_MODE_DISABLED
 
 func get_game_over_position(pos):
 	$Camera.game_over_zoom_in(pos)
-#func _ready() -> void:
-	#game_over(0)
+func _ready() -> void:
+	wave_increase()
