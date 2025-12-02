@@ -46,7 +46,7 @@ shape = SubResource("RectangleShape2D_j36od")
 texture = ExtResource("2_j36od")
 
 [node name="Collision Avoider" type="Area2D" parent="PathFollow2D/Car"]
-position = Vector2(33.5, 0)
+position = Vector2(32.6, 0)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/Car/Collision Avoider"]

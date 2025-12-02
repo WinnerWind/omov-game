@@ -82,7 +82,7 @@ func set_variables():
 		collision_avoider_object.shape = shape
 		# Position the object so that the collisions are detected ahead
 		# the 1px gap ensures that it doesn't detect itself as a collision (bad!)
-		collision_avoider_object.get_parent().position = Vector2(sprite.texture.get_size().x/2 + raycast_distance/2 + 1,0)
+		collision_avoider_object.get_parent().position = Vector2(sprite.texture.get_size().x/2 + raycast_distance/2 + 0.1,0)
 
 func crash() -> void:
 	crashed.emit()
