@@ -13,13 +13,13 @@ point_count = 3
 size = Vector2(45, 31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7vhkj"]
-size = Vector2(10, 35)
+size = Vector2(40, 35)
 
 [node name="Ambulance" type="Path2D" node_paths=PackedStringArray("sprite", "detector_collision_object", "path_follow", "collision_avoider_object")]
 curve = SubResource("Curve2D_0wfyh")
 script = ExtResource("1_vhurj")
 initial_speed = 200.0
-raycast_distance = 10.0
+raycast_distance = 40.0
 horizontal_raycast_distance = 35.0
 texture = ExtResource("2_vhurj")
 texture_scale = 1.0
@@ -46,7 +46,7 @@ shape = SubResource("RectangleShape2D_vhurj")
 texture = ExtResource("2_vhurj")
 
 [node name="Collision Avoider" type="Area2D" parent="PathFollow2D/Car"]
-position = Vector2(28.5, 0)
+position = Vector2(43.5, 0)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/Car/Collision Avoider"]
