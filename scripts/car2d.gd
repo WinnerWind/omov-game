@@ -28,7 +28,7 @@ var collision_shape:Shape2D
 @export_tool_button("Reload All Visuals") var reload_visuals_script:Callable = set_variables
 @export_group("Car Modifiers")
 @export_range(0,1,0.1) var crash_car_in_pothole_chance:float = 0.0
-@export var max_patience:float = 10;
+@export var max_patience:float = 20;
 @export var ignore_stop_signs:bool = false
 @export_group("Nodes")
 @export var sprite:Sprite2D
