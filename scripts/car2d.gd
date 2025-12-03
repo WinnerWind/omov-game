@@ -55,7 +55,7 @@ func _process(delta: float) -> void:
 			patience = 0
 			var time_taken = distance/speed
 			path_follow.progress_ratio += delta / time_taken # Move object in time_taken seconds.
-			if path_follow.progress_ratio >= 0.75: #close enough to the end so disable collision
+			if path_follow.progress_ratio >= 0.65: #close enough to the end so disable collision
 				collision_avoider_object.disabled = true
 			if path_follow.progress_ratio >= 0.99: #Reached the end of path
 				path_complete.emit()
