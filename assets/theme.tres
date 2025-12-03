@@ -1,6 +1,20 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bgbm0bam5qsyn"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://bgbm0bam5qsyn"]
 
 [ext_resource type="FontFile" uid="uid://cejkrnkde64ng" path="res://assets/fonts/DepartureMono-Regular.otf" id="1_5x3i2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wl1kw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lu33j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wycmq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x2pqw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5x3i2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e8htd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wms38"]
 
 [resource]
 CitationButtons/base_type = &"Button"
@@ -18,3 +32,14 @@ CitationTitle/base_type = &"Label"
 CitationTitle/colors/font_color = Color(0.2, 0.2, 0.2, 1)
 CitationTitle/font_sizes/font_size = 64
 CitationTitle/fonts/font = ExtResource("1_5x3i2")
+PowerupAmountLabel/base_type = &"Label"
+PowerupAmountLabel/font_sizes/font_size = 128
+PowerupAmountLabel/fonts/font = ExtResource("1_5x3i2")
+PowerupButton/base_type = &"Button"
+PowerupButton/styles/focus = SubResource("StyleBoxEmpty_wl1kw")
+PowerupButton/styles/hover = SubResource("StyleBoxEmpty_lu33j")
+PowerupButton/styles/hover_pressed = SubResource("StyleBoxEmpty_wycmq")
+PowerupButton/styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_x2pqw")
+PowerupButton/styles/normal = SubResource("StyleBoxEmpty_5x3i2")
+PowerupButton/styles/normal_mirrored = SubResource("StyleBoxEmpty_e8htd")
+PowerupButton/styles/pressed = SubResource("StyleBoxEmpty_wms38")

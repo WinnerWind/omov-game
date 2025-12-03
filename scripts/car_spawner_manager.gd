@@ -12,6 +12,7 @@ var spawners_complete:int #number of spawners in which all cars have spawned
 var spawners_cleared:int #number of spawners in which all cars have cleared.
 
 @export var bbmp_powerup_time:float
+signal bbmp_powerup_ended()
 var only_spawn_buses:bool:
 	get:
 		var val:bool
@@ -49,6 +50,7 @@ func _bbmp_powerup_used() -> void:
 		var timer := Timer.new()
 		add_child(timer)
 		timer.timeout.connect(func(): spawner.only_spawn_buses = false) #turn off only spawn buses
+		timer.timeout.connect(bbmp_powerup_ended.emit)
 		timer.timeout.connect(func(): timer.queue_free()) #Clear memory
 		timer.timeout.connect(func(): print("BBMP over!"))
 		timer.start(bbmp_powerup_time)

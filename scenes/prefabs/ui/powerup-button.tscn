@@ -1,7 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://2nekctgyyoj4"]
+[gd_scene load_steps=5 format=3 uid="uid://2nekctgyyoj4"]
 
 [ext_resource type="Texture2D" uid="uid://db007pxih81qp" path="res://assets/art/icons/bbmp-ticket.png" id="1_o8kuc"]
 [ext_resource type="Script" uid="uid://drxsk8ewl10vr" path="res://scripts/ui/powerup_button.gd" id="2_crdqk"]
+[ext_resource type="Shader" uid="uid://b4ij2y4336ltx" path="res://assets/misc/stripes.tres" id="3_54v56"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pbyhy"]
+shader = ExtResource("3_54v56")
+shader_parameter/color_gap = Color(0.25, 0.25, 0.25, 0.25)
+shader_parameter/color_stripe = Color(0, 1, 1, 0.43529412)
+shader_parameter/divisions = 8.0
+shader_parameter/stripe_bias = 2.5
+shader_parameter/speed = 0.1
+shader_parameter/angle = 0.2
+shader_parameter/skew = 0.0
 
 [node name="PowerupButton" type="Button"]
 custom_minimum_size = Vector2(256, 0)
@@ -10,6 +21,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_type_variation = &"PowerupButton"
 icon = ExtResource("1_o8kuc")
 icon_alignment = 1
 expand_icon = true
@@ -18,12 +30,23 @@ script = ExtResource("2_crdqk")
 [node name="Amount" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -23.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+theme_type_variation = &"PowerupAmountLabel"
 text = "x2"
 horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EnabledShader" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+material = SubResource("ShaderMaterial_pbyhy")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

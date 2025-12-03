@@ -275,8 +275,8 @@ size_flags_vertical = 3
 alignment = 1
 
 [node name="BBMP Powerup" parent="UI Layer/UI/Powerups" instance=ExtResource("9_choun")]
-visible = false
 layout_mode = 2
+lock_enabled_state = true
 
 [node name="Pothole Clear Powerup" parent="UI Layer/UI/Powerups" instance=ExtResource("9_choun")]
 visible = false
@@ -284,8 +284,10 @@ layout_mode = 2
 icon = ExtResource("10_ya4ey")
 
 [connection signal="bbmp_powerup_used" from="." to="Spawners" method="_bbmp_powerup_used"]
+[connection signal="bbmp_powerup_used" from="." to="UI Layer/UI/Powerups/BBMP Powerup" method="in_effect"]
 [connection signal="number_of_bbmp_changed" from="." to="UI Layer/UI/Powerups/BBMP Powerup" method="_value_changed"]
 [connection signal="number_of_potholes_powerup_changed" from="." to="UI Layer/UI/Powerups/Pothole Clear Powerup" method="_value_changed"]
 [connection signal="all_cars_cleared" from="Spawners" to="." method="wave_ended"]
+[connection signal="bbmp_powerup_ended" from="Spawners" to="UI Layer/UI/Powerups/BBMP Powerup" method="out_of_effect"]
 [connection signal="pressed" from="UI Layer/UI/Powerups/BBMP Powerup" to="." method="_use_bbmp_powerup"]
 [connection signal="pressed" from="UI Layer/UI/Powerups/Pothole Clear Powerup" to="." method="_use_pothole_powerup"]
