@@ -23,4 +23,6 @@ func set_buttons(dict:Dictionary[String,Callable]):
 		btn.pressed.connect(dict[btn_name]) #Connect signal
 		%Buttons.add_child(btn)
 func intro() -> void:
+	hide()
 	$AnimationPlayer.play("intro")
+	call_deferred("show")
