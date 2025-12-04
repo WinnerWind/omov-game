@@ -30,8 +30,8 @@ signal number_of_potholes_powerup_changed(num:int)
 signal number_of_bbmp_changed(num:int)
 
 func wave_increase():
-	print("WAVE INCREASE --- No. %s - cars %s  potholes %s"%[wave_number,cars_this_wave,potholes_this_wave])
 	wave_number += 1
+	print("WAVE INCREASE --- No. %s - cars %s  potholes %s"%[wave_number,cars_this_wave,potholes_this_wave])
 	car_spawner.number_of_vehicles_to_spawn = cars_this_wave
 	car_spawner.increase_wave()
 	
