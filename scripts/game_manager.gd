@@ -15,7 +15,7 @@ var cars_this_wave:int:
 	get:
 		return int(
 			(wave_number + 10) / 0.2 * pow(1.2,0.2)
-		)
+		) - 51
 
 @export var pothole_powerup_uses:int = 10
 @export var bbmp_powerup_uses:int = 10
