@@ -133,7 +133,7 @@ bbmp_powerup_time = 5.0
 
 [node name="North" type="Node2D" parent="Spawners"]
 script = ExtResource("3_jyhfs")
-max_delay = 4.0
+max_delay = 5.0
 min_delay = 3.0
 metadata/_custom_type_script = "uid://cqp60ymv8d6c2"
 
@@ -155,7 +155,7 @@ curve = SubResource("Curve2D_choun")
 
 [node name="East" type="Node2D" parent="Spawners"]
 script = ExtResource("3_jyhfs")
-max_delay = 4.0
+max_delay = 5.0
 min_delay = 3.0
 
 [node name="SpawnChecker" type="Area2D" parent="Spawners/East"]
@@ -176,7 +176,7 @@ curve = SubResource("Curve2D_trceg")
 
 [node name="West" type="Node2D" parent="Spawners"]
 script = ExtResource("3_jyhfs")
-max_delay = 4.0
+max_delay = 5.0
 min_delay = 3.0
 
 [node name="SpawnChecker" type="Area2D" parent="Spawners/West"]
@@ -200,7 +200,7 @@ curve = SubResource("Curve2D_muem4")
 
 [node name="South" type="Node2D" parent="Spawners"]
 script = ExtResource("3_jyhfs")
-max_delay = 4.0
+max_delay = 5.0
 min_delay = 3.0
 
 [node name="SpawnChecker" type="Area2D" parent="Spawners/South"]
@@ -250,10 +250,6 @@ rect = Vector2(700, 600)
 
 [node name="UI Layer" type="CanvasLayer" parent="."]
 
-[node name="Game Over Screen" parent="UI Layer" instance=ExtResource("12_eb6dy")]
-unique_name_in_owner = true
-visible = false
-
 [node name="UI" type="VBoxContainer" parent="UI Layer"]
 anchors_preset = 15
 anchor_right = 1.0
@@ -282,6 +278,10 @@ lock_enabled_state = true
 visible = false
 layout_mode = 2
 icon = ExtResource("10_ya4ey")
+
+[node name="Game Over Screen" parent="UI Layer" instance=ExtResource("12_eb6dy")]
+unique_name_in_owner = true
+visible = false
 
 [connection signal="bbmp_powerup_used" from="." to="Spawners" method="_bbmp_powerup_used"]
 [connection signal="bbmp_powerup_used" from="." to="UI Layer/UI/Powerups/BBMP Powerup" method="in_effect"]
