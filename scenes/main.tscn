@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bp6qss41chrho"]
+[gd_scene load_steps=32 format=3 uid="uid://bp6qss41chrho"]
 
 [ext_resource type="Script" uid="uid://bikrhnp7h2fj6" path="res://scripts/pothole_spawner.gd" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://dwnwtqxdffhvo" path="res://scripts/game_manager.gd" id="1_tbgi4"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://payarb4yxwap" path="res://scripts/game_over_camera2d.gd" id="8_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://2nekctgyyoj4" path="res://scenes/prefabs/ui/powerup-button.tscn" id="9_choun"]
 [ext_resource type="Theme" uid="uid://bgbm0bam5qsyn" path="res://assets/theme.tres" id="9_ya4ey"]
+[ext_resource type="Script" uid="uid://bkxc8ov07lgtv" path="res://scripts/ui/day_ended_panel.gd" id="10_trceg"]
 [ext_resource type="Texture2D" uid="uid://dsn0eas0lvlea" path="res://assets/art/icons/pothole-clear.png" id="10_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://b2rvg70uwb417" path="res://scenes/prefabs/ui/citation.tscn" id="12_eb6dy"]
 
@@ -265,6 +266,64 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 4.0
 mouse_filter = 2
 
+[node name="MarginContainer" type="MarginContainer" parent="UI Layer/UI/Top Spacer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"DayEndedMarginContainer"
+script = ExtResource("10_trceg")
+tween_trans = 3
+
+[node name="Day Ended Panel" type="PanelContainer" parent="UI Layer/UI/Top Spacer/MarginContainer"]
+layout_mode = 2
+theme_type_variation = &"DayEndedPanel"
+
+[node name="PanelMargin" type="MarginContainer" parent="UI Layer/UI/Top Spacer/MarginContainer/Day Ended Panel"]
+layout_mode = 2
+theme_type_variation = &"DayEndedPanelMargins"
+
+[node name="Sorter" type="VBoxContainer" parent="UI Layer/UI/Top Spacer/MarginContainer/Day Ended Panel/PanelMargin"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="UI Layer/UI/Top Spacer/MarginContainer/Day Ended Panel/PanelMargin/Sorter"]
+layout_mode = 2
+theme_type_variation = &"DayEndedTitleLabel"
+text = "DAY ENDED"
+horizontal_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI Layer/UI/Top Spacer/MarginContainer/Day Ended Panel/PanelMargin/Sorter"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"DayEndedContentLabel"
+bbcode_enabled = true
+text = "You managed to move the people in Dommasandra in time!
+
+DAY: {day}
+CARS MOVED: {cars}
+TIME TAKEN: {time_string}"
+scroll_active = false
+
+[node name="Buttons" type="HBoxContainer" parent="UI Layer/UI/Top Spacer/MarginContainer/Day Ended Panel/PanelMargin/Sorter"]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="Next Day" type="Button" parent="UI Layer/UI/Top Spacer/MarginContainer/Day Ended Panel/PanelMargin/Sorter/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"CitationButtons"
+text = "Next Day"
+flat = true
+
+[node name="Main Menu" type="Button" parent="UI Layer/UI/Top Spacer/MarginContainer/Day Ended Panel/PanelMargin/Sorter/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"CitationButtons"
+text = "Return To Menu"
+flat = true
+
 [node name="Powerups" type="HBoxContainer" parent="UI Layer/UI"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -289,5 +348,6 @@ visible = false
 [connection signal="number_of_potholes_powerup_changed" from="." to="UI Layer/UI/Powerups/Pothole Clear Powerup" method="_value_changed"]
 [connection signal="all_cars_cleared" from="Spawners" to="." method="wave_ended"]
 [connection signal="bbmp_powerup_ended" from="Spawners" to="UI Layer/UI/Powerups/BBMP Powerup" method="out_of_effect"]
+[connection signal="pressed" from="UI Layer/UI/Top Spacer/MarginContainer/Day Ended Panel/PanelMargin/Sorter/Buttons/Next Day" to="." method="wave_increase"]
 [connection signal="pressed" from="UI Layer/UI/Powerups/BBMP Powerup" to="." method="_use_bbmp_powerup"]
 [connection signal="pressed" from="UI Layer/UI/Powerups/Pothole Clear Powerup" to="." method="_use_pothole_powerup"]

@@ -1,6 +1,15 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://bgbm0bam5qsyn"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://bgbm0bam5qsyn"]
 
 [ext_resource type="FontFile" uid="uid://cejkrnkde64ng" path="res://assets/fonts/DepartureMono-Regular.otf" id="1_5x3i2"]
+[ext_resource type="Texture2D" uid="uid://ctffc8oofaq5v" path="res://assets/art/ui/day-ended-panel.png" id="2_wl1kw"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lu33j"]
+texture = ExtResource("2_wl1kw")
+texture_margin_left = 44.0
+texture_margin_top = 44.0
+texture_margin_right = 44.0
+texture_margin_bottom = 44.0
+axis_stretch_horizontal = 2
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wl1kw"]
 
@@ -17,6 +26,8 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wms38"]
 
 [resource]
+default_font = ExtResource("1_5x3i2")
+default_font_size = 32
 CitationButtons/base_type = &"Button"
 CitationButtons/colors/font_color = Color(0.2, 0.2, 0.2, 1)
 CitationButtons/colors/font_focus_color = Color(0.2, 0.2, 0.2, 1)
@@ -32,6 +43,23 @@ CitationTitle/base_type = &"Label"
 CitationTitle/colors/font_color = Color(0.2, 0.2, 0.2, 1)
 CitationTitle/font_sizes/font_size = 64
 CitationTitle/fonts/font = ExtResource("1_5x3i2")
+DayEndedContentLabel/base_type = &"RichTextLabel"
+DayEndedContentLabel/colors/default_color = Color(0.2, 0.2, 0.2, 1)
+DayEndedMarginContainer/base_type = &"MarginContainer"
+DayEndedMarginContainer/constants/margin_bottom = 100
+DayEndedMarginContainer/constants/margin_left = 100
+DayEndedMarginContainer/constants/margin_right = 100
+DayEndedMarginContainer/constants/margin_top = 100
+DayEndedPanel/base_type = &"PanelContainer"
+DayEndedPanel/styles/panel = SubResource("StyleBoxTexture_lu33j")
+DayEndedPanelMargins/base_type = &"MarginContainer"
+DayEndedPanelMargins/constants/margin_bottom = 10
+DayEndedPanelMargins/constants/margin_left = 10
+DayEndedPanelMargins/constants/margin_right = 10
+DayEndedPanelMargins/constants/margin_top = 10
+DayEndedTitleLabel/base_type = &"Label"
+DayEndedTitleLabel/colors/font_color = Color(0.2, 0.2, 0.2, 1)
+DayEndedTitleLabel/font_sizes/font_size = 48
 PowerupAmountLabel/base_type = &"Label"
 PowerupAmountLabel/font_sizes/font_size = 128
 PowerupAmountLabel/fonts/font = ExtResource("1_5x3i2")
