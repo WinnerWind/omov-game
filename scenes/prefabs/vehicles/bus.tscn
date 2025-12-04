@@ -25,7 +25,6 @@ horizontal_raycast_distance = 35.0
 texture = ExtResource("2_2thgs")
 texture_scale = 1.0
 crash_car_in_pothole_chance = 0.1
-max_patience = 10.0
 sprite = NodePath("PathFollow2D/Car/Sprite")
 detector_collision_object = NodePath("PathFollow2D/Collision Detector/CollisionShape2D")
 path_follow = NodePath("PathFollow2D")

@@ -13,16 +13,14 @@ point_count = 3
 size = Vector2(35, 19)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tdhmd"]
-size = Vector2(35, 25)
+size = Vector2(25, 25)
 
 [node name="Car" type="Path2D" node_paths=PackedStringArray("sprite", "detector_collision_object", "path_follow", "collision_avoider_object")]
 curve = SubResource("Curve2D_0wfyh")
 script = ExtResource("1_odnmy")
 initial_speed = 175.0
-raycast_distance = 35.0
 texture = ExtResource("2_hkgtj")
 texture_scale = 1.0
-max_patience = 10.0
 sprite = NodePath("PathFollow2D/Car/Sprite")
 detector_collision_object = NodePath("PathFollow2D/Collision Detector/CollisionShape2D")
 path_follow = NodePath("PathFollow2D")
@@ -45,7 +43,7 @@ shape = SubResource("RectangleShape2D_hkgtj")
 texture = ExtResource("2_hkgtj")
 
 [node name="Collision Avoider" type="Area2D" parent="PathFollow2D/Car"]
-position = Vector2(35.1, 0)
+position = Vector2(32, 0)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/Car/Collision Avoider"]

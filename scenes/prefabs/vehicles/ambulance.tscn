@@ -23,7 +23,6 @@ raycast_distance = 35.0
 horizontal_raycast_distance = 35.0
 texture = ExtResource("2_vhurj")
 texture_scale = 1.0
-max_patience = 10.0
 ignore_stop_signs = true
 sprite = NodePath("PathFollow2D/Car/Sprite")
 detector_collision_object = NodePath("PathFollow2D/Collision Detector/CollisionShape2D")
@@ -47,7 +46,7 @@ shape = SubResource("RectangleShape2D_vhurj")
 texture = ExtResource("2_vhurj")
 
 [node name="Collision Avoider" type="Area2D" parent="PathFollow2D/Car"]
-position = Vector2(40.1, 0)
+position = Vector2(41, 0)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/Car/Collision Avoider"]

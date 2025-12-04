@@ -40,6 +40,9 @@ var is_colliding:bool = false
 var is_in_stop_sign:bool = false
 var patience:float
 
+const collision_disabled_threshold:float = 0.55
+const path_completed_threshold:float = 0.85
+
 signal crashed()
 signal crash_pos(pos:Vector2)
 signal deadlock()
@@ -55,9 +58,9 @@ func _process(delta: float) -> void:
 			patience = 0
 			var time_taken = distance/speed
 			path_follow.progress_ratio += delta / time_taken # Move object in time_taken seconds.
-			if path_follow.progress_ratio >= 0.65: #close enough to the end so disable collision
-				collision_avoider_object.disabled = true
-			if path_follow.progress_ratio >= 0.99: #Reached the end of path
+			if path_follow.progress_ratio >= collision_disabled_threshold: #close enough to the end so disable collision
+				detector_collision_object.disabled = true
+			if path_follow.progress_ratio >= path_completed_threshold: #Reached the end of path
 				path_complete.emit()
 				free()
 		else:
@@ -82,10 +85,12 @@ func set_variables():
 		collision_avoider_object.shape = shape
 		# Position the object so that the collisions are detected ahead
 		# the 1px gap ensures that it doesn't detect itself as a collision (bad!)
-		collision_avoider_object.get_parent().position = Vector2(sprite.texture.get_size().x/2 + raycast_distance/2 + 0.1,0)
+		collision_avoider_object.get_parent().position = Vector2(sprite.texture.get_size().x/2 + raycast_distance/2 + 2,0)
 
 func crash() -> void:
+	if path_follow.progress_ratio >= collision_disabled_threshold: return
 	crashed.emit()
+	print(path_follow.progress_ratio)
 	crash_pos.emit(path_follow.position)
 
 func entered_slowdown() -> void:
