@@ -266,7 +266,9 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 4.0
 mouse_filter = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="UI Layer/UI/Top Spacer"]
+[node name="Day Ended" type="MarginContainer" parent="UI Layer/UI/Top Spacer"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -277,24 +279,24 @@ theme_type_variation = &"DayEndedMarginContainer"
 script = ExtResource("10_trceg")
 tween_trans = 3
 
-[node name="Day Ended Panel" type="PanelContainer" parent="UI Layer/UI/Top Spacer/MarginContainer"]
+[node name="Day Ended Panel" type="PanelContainer" parent="UI Layer/UI/Top Spacer/Day Ended"]
 layout_mode = 2
 theme_type_variation = &"DayEndedPanel"
 
-[node name="PanelMargin" type="MarginContainer" parent="UI Layer/UI/Top Spacer/MarginContainer/Day Ended Panel"]
+[node name="PanelMargin" type="MarginContainer" parent="UI Layer/UI/Top Spacer/Day Ended/Day Ended Panel"]
 layout_mode = 2
 theme_type_variation = &"DayEndedPanelMargins"
 
-[node name="Sorter" type="VBoxContainer" parent="UI Layer/UI/Top Spacer/MarginContainer/Day Ended Panel/PanelMargin"]
+[node name="Sorter" type="VBoxContainer" parent="UI Layer/UI/Top Spacer/Day Ended/Day Ended Panel/PanelMargin"]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="UI Layer/UI/Top Spacer/MarginContainer/Day Ended Panel/PanelMargin/Sorter"]
+[node name="Title" type="Label" parent="UI Layer/UI/Top Spacer/Day Ended/Day Ended Panel/PanelMargin/Sorter"]
 layout_mode = 2
 theme_type_variation = &"DayEndedTitleLabel"
 text = "DAY ENDED"
 horizontal_alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="UI Layer/UI/Top Spacer/MarginContainer/Day Ended Panel/PanelMargin/Sorter"]
+[node name="RichTextLabel" type="RichTextLabel" parent="UI Layer/UI/Top Spacer/Day Ended/Day Ended Panel/PanelMargin/Sorter"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"DayEndedContentLabel"
@@ -306,18 +308,18 @@ CARS MOVED: {cars}
 TIME TAKEN: {time_string}"
 scroll_active = false
 
-[node name="Buttons" type="HBoxContainer" parent="UI Layer/UI/Top Spacer/MarginContainer/Day Ended Panel/PanelMargin/Sorter"]
+[node name="Buttons" type="HBoxContainer" parent="UI Layer/UI/Top Spacer/Day Ended/Day Ended Panel/PanelMargin/Sorter"]
 layout_mode = 2
 theme_override_constants/separation = 64
 
-[node name="Next Day" type="Button" parent="UI Layer/UI/Top Spacer/MarginContainer/Day Ended Panel/PanelMargin/Sorter/Buttons"]
+[node name="Next Day" type="Button" parent="UI Layer/UI/Top Spacer/Day Ended/Day Ended Panel/PanelMargin/Sorter/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"CitationButtons"
 text = "Next Day"
 flat = true
 
-[node name="Main Menu" type="Button" parent="UI Layer/UI/Top Spacer/MarginContainer/Day Ended Panel/PanelMargin/Sorter/Buttons"]
+[node name="Main Menu" type="Button" parent="UI Layer/UI/Top Spacer/Day Ended/Day Ended Panel/PanelMargin/Sorter/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"CitationButtons"
@@ -348,6 +350,7 @@ visible = false
 [connection signal="number_of_potholes_powerup_changed" from="." to="UI Layer/UI/Powerups/Pothole Clear Powerup" method="_value_changed"]
 [connection signal="all_cars_cleared" from="Spawners" to="." method="wave_ended"]
 [connection signal="bbmp_powerup_ended" from="Spawners" to="UI Layer/UI/Powerups/BBMP Powerup" method="out_of_effect"]
-[connection signal="pressed" from="UI Layer/UI/Top Spacer/MarginContainer/Day Ended Panel/PanelMargin/Sorter/Buttons/Next Day" to="." method="wave_increase"]
+[connection signal="pressed" from="UI Layer/UI/Top Spacer/Day Ended/Day Ended Panel/PanelMargin/Sorter/Buttons/Next Day" to="." method="wave_increase"]
+[connection signal="pressed" from="UI Layer/UI/Top Spacer/Day Ended/Day Ended Panel/PanelMargin/Sorter/Buttons/Next Day" to="UI Layer/UI/Top Spacer/Day Ended" method="_close_deferred"]
 [connection signal="pressed" from="UI Layer/UI/Powerups/BBMP Powerup" to="." method="_use_bbmp_powerup"]
 [connection signal="pressed" from="UI Layer/UI/Powerups/Pothole Clear Powerup" to="." method="_use_pothole_powerup"]

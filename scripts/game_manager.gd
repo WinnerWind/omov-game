@@ -44,7 +44,7 @@ func wave_increase():
 
 func wave_ended():
 	print("Wave has ended!")
-	wave_increase()
+	%"Day Ended".open()
 
 func _use_pothole_powerup() -> void:
 	if pothole_powerup_uses > 0:
