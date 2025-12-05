@@ -115,6 +115,6 @@ func _on_collision_detector_area_entered(area: Area2D) -> void:
 
 func _on_collision_avoider_area_entered(_area: Area2D) -> void:
 	is_colliding = true
-	speed = 0
+	speed = 1
 func _on_collision_avoider_area_exited(_area: Area2D) -> void:
 	is_colliding = false
