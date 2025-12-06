@@ -26,3 +26,8 @@ func intro() -> void:
 	hide()
 	$AnimationPlayer.play("intro")
 	call_deferred("show")
+
+func outro() -> void:
+	$AnimationPlayer.play("outro")
+	await $AnimationPlayer.animation_finished
+	hide()

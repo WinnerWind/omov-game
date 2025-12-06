@@ -80,6 +80,11 @@ func queue_spawn() -> void:
 			spawner_signal_emitted = true
 		
 
+func clear_all_cars() -> void:
+	for child in get_children():
+		if child is CarPath:
+			child.queue_free()
+
 func check_all_cars_finished():
 	await get_tree().process_frame
 	var cars:Array[CarPath]

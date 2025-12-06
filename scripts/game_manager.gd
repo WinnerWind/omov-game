@@ -72,7 +72,7 @@ func game_over(reason:GameOverReasons) -> void:
 		GameOverReasons.DEADLOCK: content = "Dommasandra had a complete deadlock!"
 		GameOverReasons.CRASH: content = "Two vehicles collided with each other!"
 		GameOverReasons.TOO_SLOW: content = "Cars were not moving fast enough!"
-	var button_dictionary:Dictionary[String,Callable] = {"Restart": get_tree().reload_current_scene, "Main Menu": func(): print("Hello World")}
+	var button_dictionary:Dictionary[String,Callable] = {"Restart": restart, "Main Menu": return_to_main_menu}
 	citation_screen.set_content(title, content , wave_number, 0)
 	citation_screen.set_buttons(button_dictionary)
 	%Spawners.set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)
@@ -84,3 +84,9 @@ func get_game_over_position(pos):
 func return_to_main_menu() -> void:
 	%Spawners.set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)
 	%MainMenu.open()
+
+func restart() -> void:
+	$Camera.return_to_original_position()
+	%Spawners.clear_all_cars()
+	%"Game Over Screen".outro()
+	wave_increase()

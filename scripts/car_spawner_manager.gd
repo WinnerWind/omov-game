@@ -54,3 +54,6 @@ func _bbmp_powerup_used() -> void:
 		timer.timeout.connect(func(): timer.queue_free()) #Clear memory
 		timer.timeout.connect(func(): print("BBMP over!"))
 		timer.start(bbmp_powerup_time)
+
+func clear_all_cars():
+	for spawner in spawners: spawner.clear_all_cars()
