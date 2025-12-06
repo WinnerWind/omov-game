@@ -31,6 +31,7 @@ signal number_of_bbmp_changed(num:int)
 
 func wave_increase():
 	wave_number += 1
+	%Spawners.set_deferred("process_mode", Node.PROCESS_MODE_INHERIT)
 	print("WAVE INCREASE --- No. %s - cars %s  potholes %s"%[wave_number,cars_this_wave,potholes_this_wave])
 	car_spawner.number_of_vehicles_to_spawn = cars_this_wave
 	car_spawner.increase_wave()
@@ -79,5 +80,7 @@ func game_over(reason:GameOverReasons) -> void:
 
 func get_game_over_position(pos):
 	$Camera.game_over_zoom_in(pos)
-func _ready() -> void:
-	wave_increase()
+
+func return_to_main_menu() -> void:
+	%Spawners.set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)
+	%MainMenu.open()

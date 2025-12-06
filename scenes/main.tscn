@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bp6qss41chrho"]
+[gd_scene load_steps=33 format=3 uid="uid://bp6qss41chrho"]
 
 [ext_resource type="Script" uid="uid://bikrhnp7h2fj6" path="res://scripts/pothole_spawner.gd" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://dwnwtqxdffhvo" path="res://scripts/game_manager.gd" id="1_tbgi4"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://bkxc8ov07lgtv" path="res://scripts/ui/day_ended_panel.gd" id="10_trceg"]
 [ext_resource type="Texture2D" uid="uid://dsn0eas0lvlea" path="res://assets/art/icons/pothole-clear.png" id="10_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://b2rvg70uwb417" path="res://scenes/prefabs/ui/citation.tscn" id="12_eb6dy"]
+[ext_resource type="Script" uid="uid://btltdo66xlalm" path="res://scripts/ui/main_menu.gd" id="14_a8y0u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85g3d"]
 size = Vector2(136, 82)
@@ -344,6 +345,49 @@ icon = ExtResource("10_ya4ey")
 unique_name_in_owner = true
 visible = false
 
+[node name="MainMenu" type="MarginContainer" parent="UI Layer"]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_ya4ey")
+theme_type_variation = &"MainMenuMargins"
+script = ExtResource("14_a8y0u")
+animation_time = 2.0
+tween_trans = 7
+
+[node name="PanelContainer" type="PanelContainer" parent="UI Layer/MainMenu"]
+layout_mode = 2
+theme_type_variation = &"DayEndedPanel"
+
+[node name="Sorter" type="VBoxContainer" parent="UI Layer/MainMenu/PanelContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="UI Layer/MainMenu/PanelContainer/Sorter"]
+layout_mode = 2
+theme_type_variation = &"CitationTitle"
+text = "Danger in Dommasandra"
+
+[node name="Label" type="RichTextLabel" parent="UI Layer/MainMenu/PanelContainer/Sorter"]
+layout_mode = 2
+theme_type_variation = &"CitationMainText"
+text = "An Our Mobility Our Voice game"
+fit_content = true
+
+[node name="Play" type="Button" parent="UI Layer/MainMenu/PanelContainer/Sorter"]
+layout_mode = 2
+theme_type_variation = &"CitationButtons"
+text = "Play Game"
+flat = true
+
+[node name="Credits" type="Button" parent="UI Layer/MainMenu/PanelContainer/Sorter"]
+layout_mode = 2
+theme_type_variation = &"CitationButtons"
+text = "Credits"
+flat = true
+
 [connection signal="bbmp_powerup_used" from="." to="Spawners" method="_bbmp_powerup_used"]
 [connection signal="bbmp_powerup_used" from="." to="UI Layer/UI/Powerups/BBMP Powerup" method="in_effect"]
 [connection signal="number_of_bbmp_changed" from="." to="UI Layer/UI/Powerups/BBMP Powerup" method="_value_changed"]
@@ -354,3 +398,5 @@ visible = false
 [connection signal="pressed" from="UI Layer/UI/Top Spacer/Day Ended/Day Ended Panel/PanelMargin/Sorter/Buttons/Next Day" to="UI Layer/UI/Top Spacer/Day Ended" method="_close_deferred"]
 [connection signal="pressed" from="UI Layer/UI/Powerups/BBMP Powerup" to="." method="_use_bbmp_powerup"]
 [connection signal="pressed" from="UI Layer/UI/Powerups/Pothole Clear Powerup" to="." method="_use_pothole_powerup"]
+[connection signal="start_waves" from="UI Layer/MainMenu" to="." method="wave_increase"]
+[connection signal="pressed" from="UI Layer/MainMenu/PanelContainer/Sorter/Play" to="UI Layer/MainMenu" method="play"]
