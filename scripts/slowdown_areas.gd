@@ -40,6 +40,7 @@ func path_entered(path:CarPath):
 
 func path_exited(path:CarPath):
 	path.speed = -1
+	if stop_car_entirely: path.exited_stop()
 
 
 func toggle_stopped_state(state):

@@ -105,6 +105,10 @@ func entered_stop() -> void:
 		speed = 0
 		is_in_stop_sign = true
 
+func exited_stop() -> void:
+	# 6/12/25
+	# HOW DID I LEAVE THIS BUG IN THE GAME FOR A WEEK?!
+	is_in_stop_sign = false
 func _on_collision_detector_area_entered(area: Area2D) -> void:
 	if not area is SlowdownArea: #Ensure we collided with a car
 		if not path_follow.progress_ratio <= 0.4: #Stop so called spawn crashes
