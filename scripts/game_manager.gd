@@ -83,7 +83,10 @@ func get_game_over_position(pos):
 
 func return_to_main_menu() -> void:
 	%Spawners.set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)
+	%Spawners.clear_all_cars()
 	%MainMenu.open()
+	%"Game Over Screen".outro()
+	$Camera.return_to_original_position()
 
 func restart() -> void:
 	$Camera.return_to_original_position()
